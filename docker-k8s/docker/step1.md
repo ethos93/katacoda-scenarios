@@ -24,3 +24,6 @@ docker image 확인은 다음과 같이 할 수 있습니다.
 `docker pull ubuntu`{{execute}}
 
 이미지는 하나의 파일로 다운로드 되는 것이 아니라, 여러 layer가 순차적으로 다운로드 됩니다.
+
+## ubuntu 이미지가 정상적으로 pull 되었는지 확인합니다.
+`docker images`{{execute}}
