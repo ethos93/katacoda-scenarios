@@ -1,0 +1,16 @@
+{
+  "title": "Docker & K8S",
+  "description": "Docker & K8S Training with katacoda",
+  "courses": [
+    {
+      "course_id": "docker",
+      "title": "Docker Training",
+      "description": "Docker Training with katacoda"
+    },
+    {
+      "course_id": "k8s",
+      "title": "Kubernetes Training",
+      "description": "Kubernetes Training with katacoda"
+    }
+  ]
+}
