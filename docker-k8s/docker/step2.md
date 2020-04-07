@@ -7,12 +7,15 @@ Host 에서 Layer를 조회하여 보면 4개의 Layer가 조회되는 것을 �
 
 ## Docker Container 실행
 `docker run -it --name myubuntu ubuntu /bin/bash`{{execute}}
+
 ubuntu 이미지를 미리 pull 했기 때문에 바로 Run 되지만, 만약 실행하고자 하는 Docker 이미지가 로컬 환경에 없다면, 자동으로 ubuntu 이미지를 다운받은 뒤에 Run 됩니다.
 
 Docker Container 환경으로 접속되었으며, os-release 정보를 통해 현재 접속되어 있는 Container의 os를 확인할 수 있습니다.
+
 `cat /etc/os-release`{{execute}}
 
 Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
+
 `ls -1 -t /var/lib/docker/overlay`{{execute}}
 
 docker run 이전에는 4개의 layer가 있었으나, docker run 이 된 후에는 layer가 하나 추가 된 것을 확인할 수 있습니다.
@@ -20,9 +23,11 @@ docker run 이전에는 4개의 layer가 있었으나, docker run 이 된 후에
 
 ## Docker Container로 부터 이미지를 생성
 Docker Container에 접속되어 있는 Terminal Tab에서 아래 명령으로 파일을 생성합니다.
+
 `echo "hello ubuntu" > hello.txt`{{execute}}
 
 다시 Terminal 2 Tab으로 이동하여, Commit 명령을 통해 hello.txt 파일이 포함된 새로운 이미지를 생성합니다.
+
 `docker commit -a sds -m "add hello.txt" myubuntu myununtu/1.0`{{execute}}
 
 
