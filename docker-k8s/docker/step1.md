@@ -17,8 +17,13 @@ docker image 확인은 다음과 같이 할 수 있습니다.
 ## 다시 한번 docker 이미지가 있는지 확인합니다.
 `docker images`{{execute}}
 
-## Ubuntu 이미지 pull
+## Ubuntu 이미지를 검색해 봅니다.
+`docker search ubuntu`{{execute}}
 
+Docker Hub에서 검색도 가능합니다.
+https://hub.docker.com/
+
+## Ubuntu 이미지 pull
 다음 명령을 통해 ubuntu 이미지를 pull 할 수 있습니다.
 
 `docker pull ubuntu`{{execute}}
