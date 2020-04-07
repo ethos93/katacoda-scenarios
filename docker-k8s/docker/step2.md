@@ -19,6 +19,7 @@ Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
 `ls -1 -t /var/lib/docker/overlay`{{execute}}
 
 docker run 이전에는 4개의 layer가 있었으나, docker run 이 된 후에는 layer가 하나 추가 된 것을 확인할 수 있습니다.
+
 기존 4개의 layer는 Read Only Layer이며, Continer가 실행되면 이미지가 변경될 Layer가 생성되며 해당 Layer는 Read Write가 모두 가능합니다.
 
 ## Docker Container로 부터 이미지를 생성
