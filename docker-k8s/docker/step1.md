@@ -1,4 +1,4 @@
-우선, ubuntu 최신 이미지를 Repository로 부터 pull 하여 local에 저장해 보겠습니다.
+ubuntu 최신 이미지를 Repository로 부터 pull 하여 local에 저장해 봅니다.
 
 ## docker 프로세스와 이미지를 확인
 docker 프로세스 확인은 다음과 같이 할 수 있습니다.
