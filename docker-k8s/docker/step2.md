@@ -28,6 +28,6 @@ Docker Container에 접속되어 있는 Terminal Tab에서 아래 명령으로 �
 
 다시 Terminal 2 Tab으로 이동하여, Commit 명령을 통해 hello.txt 파일이 포함된 새로운 이미지를 생성합니다.
 
-`docker commit -a sds -m "add hello.txt" myubuntu myununtu/1.0`{{execute}}
+`docker commit -a sds -m "add hello.txt" myubuntu myununtu:1.0`{{execute}}
 
 
