@@ -23,8 +23,7 @@
       }
     ],
     "intro": {
-      "text": "intro.md",
-      "courseData": "courseBase.sh"
+      "text": "intro.md"
     },
     "finish": {
       "text": "finish.md"
@@ -33,8 +32,7 @@
   "environment": {
     "uilayout": "editor-terminal",
     "terminals": [
-            {"name": "Terminal 1", "target": "host01"},
-            {"name": "Terminal 2", "target": "host01"}
+            {"name": "Terminal 1", "target": "host01"}
         ]
   },
   "backend": {
