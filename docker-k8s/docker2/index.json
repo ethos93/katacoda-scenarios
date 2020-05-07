@@ -16,10 +16,8 @@
     ],
     "assets": {
         "host01": [
-            {"file": "Dockerfile", "target": "/root/lab1/"},
-            {"file": "Dockerfile", "target": "/root/lab2/"},
-            {"file": "HelloDocker.java", "target": "/root/lab1/"},
-            {"file": "HelloDocker.java", "target": "/root/lab2/"}
+            {"file": "Dockerfile", "target": "/root/lab/"},
+            {"file": "HelloDocker.java", "target": "/root/lab/"}
         ]
     },
     "intro": {
@@ -30,11 +28,14 @@
       "text": "finish.md"
     }
   },
+  "files": [
+      "HelloDocker.java", "Dockerfile"
+  ],
   "environment": {
     "uilayout": "editor-terminal",
-    "terminals": [
-            {"name": "Terminal 1", "target": "host01"}
-        ]
+    "hideHiddenFiles": true,
+    "uisettings": "dockerfile",
+    "uieditorpath": "/root/lab"
   },
   "backend": {
     "imageid": "ubuntu"
