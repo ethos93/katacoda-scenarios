@@ -38,8 +38,7 @@ hellodocker이미지를 v2 tag를 붙여서 생성합니다.
 
 `docker build -t hellodocker:v2 .`{{execute}}
 
-출력되는 로그를 보시면, Base Image Pull 한 뒤에 Dockerfile에 명시된 대로, 진행됩니다.
-
+출력되는 로그를 보시면, build-stage를 위한 Base Image는 이미 이전에 받았기 때문에, production-stage를 위한 Base Image를 Pull 한 뒤에 Dockerfile에 명시된 대로, 진행됩니다.
 
 ## docker 이미지 확인
 hellodocker 이미지가 정상적으로 생성 되었는지 확인합니다.
