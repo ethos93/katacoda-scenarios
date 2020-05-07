@@ -2,15 +2,13 @@ Dockerfile을 생성하고 docker 이미지를 생성하는 실습을 진행합�
 
 첫번째 실습을 위해 디렉토리를 이동합니다.
 
-`cd /root/lab1`{{execute}}
+`cd /root/lab`{{execute}}
 
 Dockerfile 생성전에 간단한 Java Application을 작성해 봅니다.
 
 ## Java Application
-lab1 경로에 HelloDocker.java 파일이 생성되어 있습니다.
-오른쪽 탐색기에서 /root/lab1에 있는 파일을 열어보세요. 에디터로 열리며 수정하시면 자동 저장됩니다.
-
-`HelloDocker.java`{{open}}
+lab 경로에 HelloDocker.java 파일이 생성되어 있습니다.
+에디터로 열려 있으며 수정하시면 자동 저장됩니다.
 
 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi HelloDocker.java`{{execute}}
@@ -22,11 +20,13 @@ java로 실행시 "Hello Docker!!!"를 출력하고 종료되는 아주 간단�
 이제 앞서 만든 Java Application이 구동되는 docker 이미지를 만듭니다.
 
 docker 이미지는 일반적으로 Dockerfile를 통해 build하여 만듭니다.
+Dockerfile도 에디터로 열려 있으니 수정하시면 자동 저장됩니다.
 
-`/root/lab1/Dockerfile`{{open}}
+역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
+`vi Dockerfile`{{execute}}
 
-<pre class="file" data-filename="app.js" data-target="replace">FROM java:8
-COPY . /hello
+<pre class="file" data-filename="Dockerfile" data-target="replace">FROM java:8
+COPY HelloDocker.java /hello
 WORKDIR /hello
 RUN javac HelloDocker.java
 CMD ["java","HelloDocker"]
