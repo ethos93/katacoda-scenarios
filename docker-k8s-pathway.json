@@ -4,8 +4,13 @@
   "courses": [
     {
       "course_id": "docker",
-      "title": "Docker Training",
-      "description": "Docker Training with katacoda"
+      "title": "Docker Training 1",
+      "description": "Docker Image Over View"
+    },
+    {
+      "course_id": "docker2",
+      "title": "Docker Training 2",
+      "description": "Create Dockerfile"
     },
     {
       "course_id": "k8s",
