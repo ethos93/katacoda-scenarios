@@ -27,8 +27,24 @@ Docker Container에 접속되어 있는 Terminal Tab에서 아래 명령으로 �
 
 `echo "hello ubuntu" > hello.txt`{{execute}}
 
-다시 Terminal 2 Tab으로 이동하여, Commit 명령을 통해 hello.txt 파일이 포함된 새로운 이미지를 생성합니다.
+다시 Terminal 1 Tab으로 이동하여, Commit 명령을 통해 hello.txt 파일이 포함된 새로운 이미지를 생성합니다.
 
 `docker commit -a sds -m "add hello.txt" myubuntu myununtu:1.0`{{execute}}
+
+Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
+
+`ls -1 -t /var/lib/docker/overlay`{{execute}}
+
+또 다른 layer가 추가된 것을 확인할 수 있으며, commit에 의해 Read Only Layer가 추가된 것입니다.
+
+이제 실행중인 컨테이너를 삭제합니다.
+
+`docker rm -f myubuntu`{{execute}}
+
+다시한번 overlay 이미지를 확인해 보면 `ls -1 -t /var/lib/docker/overlay`{{execute}} Container가 실행되면서 생성되었던 Read Write Layer는 삭제되고 Read Only Layer만 5개가 남은 것을 확인할 수 있습니다.
+
+마지막으로, 신규로 생성한 이미지도 확인해 봅니다.
+
+`docker images`{{execute}}
 
 
