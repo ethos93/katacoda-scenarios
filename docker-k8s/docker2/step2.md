@@ -14,7 +14,7 @@ Dockerfile을 아래와 같이 수정합니다.
 <pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8 as build-stage
 COPY HelloDocker.java /hello
 WORKDIR /hello
-RUN javac HelloDocker.java && rm -rf HelloDocker.java
+RUN javac HelloDocker.java && rm HelloDocker.java
 
 FROM openjdk:8-jre as production-stage
 COPY --from=build-stage /hello /hello
