@@ -1,50 +1,54 @@
-Host 에서 Layer를 조회하여 보면 4개의 Layer가 조회되는 것을 확인할 수 있습니다.
+이전 Step에서 Java Application을 포함하는 docker 이미지를 생성해 보았는데,
+base image로 java8을 사용하였기 때문에, Compiler를 포함하여 Java JDK가 모두 포함되어 이미지의 크기가 큽니다.
 
-## overlay 이미지 확인
-/var/lib/docker/overlay 경로에 이미지가 조회됩니다.
+docker는 multi-stage build 기능을 제공하기 때문에 최종 docker 이미지에는 binary만 포함될 수 있도록 할 수가 있습니다.
 
-`ls -1 -t /var/lib/docker/overlay`{{execute}}
+HelloDocker.java 파일은 그대로 두고 Dockerfile만 수정해 보겠습니다.
 
-## Docker Container 실행
-`docker run -it --name myubuntu ubuntu /bin/bash`{{execute}}
+## Dockerfile 수정
+Dockerfile을 아래와 같이 수정합니다.
 
-ubuntu 이미지를 미리 pull 했기 때문에 바로 Run 되지만, 만약 실행하고자 하는 Docker 이미지가 로컬 환경에 없다면, 자동으로 ubuntu 이미지를 다운받은 뒤에 Run 됩니다.
+역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
+`vi Dockerfile`{{execute}}
 
-Docker Container 환경으로 접속되었으며, os-release 정보를 통해 현재 접속되어 있는 Container의 os를 확인할 수 있습니다.
+<pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8 as build-stage
+COPY HelloDocker.java /hello
+WORKDIR /hello
+RUN javac HelloDocker.java && rm -rf HelloDocker.java
 
-`cat /etc/os-release`{{execute}}
+FROM openjdk:8-jre as production-stage
+COPY --from=build-stage /hello /hello
+WORKDIR /hello
+CMD ["java","HelloDocker"]
+</pre>
 
-Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
+1. openjdk8이 포함된 이미지를 build-stage 로 정하고
+2. /hello 경로에 HelloDocker.java 파일을 복사하고
+3. /hello 경로로 이동한 뒤
+4. HelloDocker.java 를 컴파일한뒤, .java 파일은 삭제 (HelloDocker.class 파일만 남음)
+5. openjdk8의 jre만 포함된 이미지를 production-stage 로 정하고
+6. build-stage 이미지로의 /hello 디렉토리 전체를 production-stage로 복사하고
+7. 작업 경로를 /hello로 변경
+8. docker container가 구동되면 java HelloDocker 를 실행
 
-`ls -1 -t /var/lib/docker/overlay`{{execute}}
+Dockerfile을 잘 수정하였다면, 이제 이미지를 생성합니다.
 
-docker run 이전에는 4개의 layer가 있었으나, docker run 이 된 후에는 layer가 하나 추가 된 것을 확인할 수 있습니다.
+## docker 이미지 생성
+hellodocker이미지를 v2 tag를 붙여서 생성합니다.
 
-기존 4개의 layer는 Read Only Layer이며, Continer가 실행되면 이미지가 변경될 Layer가 생성되며 해당 Layer는 Read Write가 모두 가능합니다.
+`docker build -t hellodocker:v2 .`{{execute}}
 
-## Docker Container로 부터 이미지를 생성
-Docker Container에 접속되어 있는 Terminal Tab에서 아래 명령으로 파일을 생성합니다.
+출력되는 로그를 보시면, Base Image Pull 한 뒤에 Dockerfile에 명시된 대로, 진행됩니다.
 
-`echo "hello ubuntu" > hello.txt`{{execute}}
 
-다시 Terminal 1 Tab으로 이동하여, Commit 명령을 통해 hello.txt 파일이 포함된 새로운 이미지를 생성합니다.
-
-`docker commit -a sds -m "add hello.txt" myubuntu myununtu:1.0`{{execute}}
-
-Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
-
-`ls -1 -t /var/lib/docker/overlay`{{execute}}
-
-또 다른 layer가 추가된 것을 확인할 수 있으며, commit에 의해 Read Only Layer가 추가된 것입니다.
-
-이제 실행중인 컨테이너를 삭제합니다.
-
-`docker rm -f myubuntu`{{execute}}
-
-다시한번 overlay 이미지를 확인해 보면 `ls -1 -t /var/lib/docker/overlay`{{execute}} Container가 실행되면서 생성되었던 Read Write Layer는 삭제되고 Read Only Layer만 5개가 남은 것을 확인할 수 있습니다.
-
-마지막으로, 신규로 생성한 이미지도 확인해 봅니다.
+## docker 이미지 확인
+hellodocker 이미지가 정상적으로 생성 되었는지 확인합니다.
 
 `docker images`{{execute}}
 
+v1 과 v2 는 Java Application은 동일하지만, base image의 차이때문에 이미지 전체의 사이즈가 크게 차이가 납니다.
+이와 같이 어떻게 Dockerfile를 작성하느냐에 따라 최종 이미지의 사이즈가 달라질 수 있으며, 이러한 차이가 이미지를 생성할때, Registry에 Push할때, Pull할때 네트워크 및 스토리지, 소요 시간등의 차이를 가져오기 때문에 가급적 이미지를 최소화 할 수 있도록 하는 노력이 필요합니다.
 
+생성된 이미지가 잘 실행되는지도 확인합니다.
+
+`docker run hellodocker:v2`{{execute}}
