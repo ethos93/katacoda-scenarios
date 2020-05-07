@@ -32,7 +32,7 @@ Dockerfile도 에디터로 열려 있으니 수정하시면 자동 저장됩니�
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi Dockerfile`{{execute}}
 
-<pre class="file" data-filename="Dockerfile" data-target="replace">FROM java:8
+<pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8
 COPY HelloDocker.java /hello
 WORKDIR /hello
 RUN javac HelloDocker.java
@@ -40,7 +40,7 @@ CMD ["java","HelloDocker"]
 </pre>
 
 Dockerfile의 각 라인을 설명하자면,
-1. java8이 포함된 이미지를 생성하며
+1. openjdk8이 포함된 이미지를 생성하며
 2. /hello 경로에 HelloDocker.java 파일을 복사하고
 3. /hello 경로로 이동한 뒤
 4. HelloDocker.java 를 컴파일하고
