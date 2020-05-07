@@ -23,7 +23,7 @@
     }
   },
   "files": [
-      "HelloDocker.java", "Dockerfile"
+      "HelloDocker.java", "Dockerfile", "HelloDocker.go"
   ],
   "environment": {
     "uilayout": "editor-terminal",
