@@ -33,7 +33,7 @@ Dockerfile도 에디터로 열려 있으니 수정하시면 자동 저장됩니�
 `vi Dockerfile`{{execute}}
 
 <pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8
-COPY HelloDocker.java /hello
+COPY HelloDocker.java /hello/
 WORKDIR /hello
 RUN javac HelloDocker.java
 CMD ["java","HelloDocker"]
