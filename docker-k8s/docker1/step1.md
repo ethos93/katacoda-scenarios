@@ -9,14 +9,15 @@ docker image 확인은 다음과 같이 할 수 있습니다.
 
 `docker images`{{execute}}
 
-## 모든 docker process와 이미지를 삭제
+## 모든 docker 프로세스와 이미지를 삭제
+모든 docker 프로세스 삭제 
+
 `docker rm -f $(docker ps -aq)`{{execute}}
 
+모든 docker 이미지 삭제
 `docker rmi -f $(docker images -aq)`{{execute}}
 
-다시 한번 docker 이미지가 있는지 확인합니다.
-
-`docker images`{{execute}}
+docker rmi 를 사용하여도 해당 이미지를 사용중인 Process가 있다면 이미지는 삭제되지 않습니다.
 
 ## Ubuntu 이미지를 검색
 
