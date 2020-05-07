@@ -56,14 +56,11 @@ hellodocker이미지를 v1 tag를 붙여서 생성합니다.
 출력되는 로그를 보시면, Base Image Pull 한 뒤에 Dockerfile에 명시된 대로, 진행됩니다.
 
 
-
-## Ubuntu 이미지 pull
-다음 명령을 통해 ubuntu 이미지를 pull 할 수 있습니다.
-
-`docker pull ubuntu`{{execute}}
-
-이미지는 하나의 파일로 다운로드 되는 것이 아니라, 여러 layer가 순차적으로 다운로드 됩니다.
-
-ubuntu 이미지가 정상적으로 pull 되었는지 확인합니다.
+## docker 이미지 확인
+hellodocker 이미지가 정상적으로 생성 되었는지 확인합니다.
 
 `docker images`{{execute}}
+
+생성된 이미지가 잘 실행되는지도 확인합니다.
+
+`docker run hellodocker:v1`{{execute}}
