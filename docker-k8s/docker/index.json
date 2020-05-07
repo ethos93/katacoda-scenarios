@@ -1,8 +1,8 @@
 {
-  "title": "Docker Training",
-  "description": "Docker Training with katacoda",
+  "title": "Docker Training 1",
+  "description": "Docker Image Overview",
   "difficulty": "Beginner",
-  "time": "20 minutes",
+  "time": "10 minutes",
   "details": {
     "steps": [
       {
