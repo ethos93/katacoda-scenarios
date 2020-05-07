@@ -14,6 +14,12 @@
         "text": "step2.md"
       }
     ],
+    "assets": {
+        "host01": [
+            {"file": "Dockerfile", "target": "/docker/"},
+            {"file": "HelloDocker.java", "target": "/docker/"}
+        ]
+    },
     "intro": {
       "text": "intro.md",
       "courseData": "courseBase.sh"
