@@ -12,7 +12,7 @@ Dockerfile을 아래와 같이 수정합니다.
 `vi Dockerfile`{{execute}}
 
 <pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8 as build-stage
-COPY HelloDocker.java /hello
+COPY HelloDocker.java /hello/
 WORKDIR /hello
 RUN javac HelloDocker.java && rm HelloDocker.java
 
