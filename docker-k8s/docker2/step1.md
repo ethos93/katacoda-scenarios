@@ -1,29 +1,54 @@
-ubuntu 최신 이미지를 Repository로 부터 pull 하여 local에 저장해 봅니다.
+Dockerfile을 생성하고 docker 이미지를 생성하는 실습을 진행합니다.
 
-## docker 프로세스와 이미지를 확인
-docker 프로세스 확인은 다음과 같이 할 수 있습니다.
+첫번째 실습을 위해 디렉토리를 이동합니다.
 
-`docker ps -a`{{execute}}
+`cd /root/lab1`{{execute}}
 
-docker image 확인은 다음과 같이 할 수 있습니다.
+Dockerfile 생성전에 간단한 Java Application을 작성해 봅니다.
 
-`docker images`{{execute}}
+## Java Application
+lab1 경로에 HelloDocker.java 파일이 생성되어 있습니다.
+오른쪽 탐색기에서 /root/lab1에 있는 파일을 열어보세요. 에디터로 열리며 수정하시면 자동 저장됩니다.
 
-## 모든 docker process와 이미지를 삭제
-`docker rm -f $(docker ps -aq)`{{execute}}
+`HelloDocker.java`{{open}}
 
-`docker rmi -f $(docker images -aq)`{{execute}}
+vi가 익숙하시면 vi를 사용하셔도 됩니다.
+`vi HelloDocker.java`{{execute}}
 
-다시 한번 docker 이미지가 있는지 확인합니다.
+java로 실행시 "Hello Docker!!!"를 출력하고 종료되는 아주 간단한 Application 입니다.
+원하신다면 Java code를 직접 수정해 보셔도 좋습니다.
 
-`docker images`{{execute}}
+## Dockerfile 생성
+이제 앞서 만든 Java Application이 구동되는 docker 이미지를 만듭니다.
 
-## Ubuntu 이미지를 검색
+docker 이미지는 일반적으로 Dockerfile를 통해 build하여 만듭니다.
 
-`docker search ubuntu`{{execute}}
+`/root/lab1/Dockerfile`{{open}}
 
-Docker Hub에서 검색도 가능합니다.
-https://hub.docker.com/
+<pre class="file" data-filename="app.js" data-target="replace">FROM java:8
+COPY . /hello
+WORKDIR /hello
+RUN javac HelloDocker.java
+CMD ["java","HelloDocker"]
+</pre>
+
+Dockerfile의 각 라인을 설명하자면,
+1. java8이 포함된 이미지를 생성하며
+2. /hello 경로에 HelloDocker.java 파일을 복사하고
+3. /hello 경로로 이동한 뒤
+4. HelloDocker.java 를 컴파일하고
+5. docker container가 구동되면 java HelloDocker 를 실행
+
+Dockerfile을 잘 생성하였다면, 이제 이미지를 생성합니다.
+
+## docker 이미지 생성
+hellodocker이미지를 v1 tag를 붙여서 생성합니다.
+
+`docker build -t hellodocker:v1 .`{{execute}}
+
+출력되는 로그를 보시면, Base Image Pull 한 뒤에 Dockerfile에 명시된 대로, 진행됩니다.
+
+
 
 ## Ubuntu 이미지 pull
 다음 명령을 통해 ubuntu 이미지를 pull 할 수 있습니다.
