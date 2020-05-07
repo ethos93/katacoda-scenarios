@@ -13,6 +13,13 @@ lab 경로에 HelloDocker.java 파일이 생성되어 있습니다.
 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi HelloDocker.java`{{execute}}
 
+<pre class="file" data-filename="HelloDocker.java" data-target="replace">public class HelloDocker {
+	public static void main(String[] args) {
+		System.out.println("Hello Docker!!!");
+	}
+}
+</pre>
+
 java로 실행시 "Hello Docker!!!"를 출력하고 종료되는 아주 간단한 Application 입니다.
 원하신다면 Java code를 직접 수정해 보셔도 좋습니다.
 
