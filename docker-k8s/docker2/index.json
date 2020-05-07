@@ -18,7 +18,7 @@
         "host01": [
             {"file": "Dockerfile", "target": "/root/lab1/"},
             {"file": "Dockerfile", "target": "/root/lab2/"},
-            {"file": "HelloDocker.java", "target": "/root/lab1/"}
+            {"file": "HelloDocker.java", "target": "/root/lab1/"},
             {"file": "HelloDocker.java", "target": "/root/lab2/"}
         ]
     },
