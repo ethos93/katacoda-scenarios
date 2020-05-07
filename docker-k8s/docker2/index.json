@@ -16,8 +16,8 @@
     ],
     "assets": {
         "host01": [
-            {"file": "Dockerfile", "target": "/docker/"},
-            {"file": "HelloDocker.java", "target": "/docker/"}
+            {"file": "Dockerfile", "target": "/root/docker/"},
+            {"file": "HelloDocker.java", "target": "/root/docker/"}
         ]
     },
     "intro": {
