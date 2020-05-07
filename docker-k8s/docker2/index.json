@@ -1,0 +1,34 @@
+{
+  "title": "Docker Training 2",
+  "description": "Create Dockerfile",
+  "difficulty": "Beginner",
+  "time": "10 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2",
+        "text": "step2.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "courseBase.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "terminals": [
+            {"name": "Terminal 1", "target": "host01"}
+        ]
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
