@@ -32,9 +32,7 @@ Dockerfile을 아래와 같이 수정합니다.
 WORKDIR $GOPATH/src/HelloDocker/
 COPY HelloDocker.go .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflags="-w -s" -o /hello/HelloDocker
-############################
-# STEP 2 build a small image
-############################
+
 FROM scratch as production-stage
 COPY --from=builder /hello /hello
 CMD ["/hello/HelloDocker"]
