@@ -14,10 +14,10 @@ Dockerfile을 아래와 같이 수정합니다.
 <pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8 as build-stage
 COPY HelloDocker.java /hello/
 WORKDIR /hello
-RUN javac HelloDocker.java && rm HelloDocker.java
+RUN javac HelloDocker.java
 
 FROM openjdk:8-jre as production-stage
-COPY --from=build-stage /hello /hello
+COPY --from=build-stage /hello/HelloDocker.class /hello/HelloDocker.class
 WORKDIR /hello
 CMD ["java","HelloDocker"]
 </pre>
@@ -25,9 +25,9 @@ CMD ["java","HelloDocker"]
 1. openjdk8이 포함된 이미지를 build-stage 로 정하고
 2. /hello 경로에 HelloDocker.java 파일을 복사하고
 3. /hello 경로로 이동한 뒤
-4. HelloDocker.java 를 컴파일한뒤, .java 파일은 삭제 (HelloDocker.class 파일만 남음)
+4. HelloDocker.java 를 컴파일한뒤
 5. openjdk8의 jre만 포함된 이미지를 production-stage 로 정하고
-6. build-stage 이미지로의 /hello 디렉토리 전체를 production-stage로 복사하고
+6. build-stage 이미지로의 /hello/HelloDocker.class 파일을 production-stage로 복사하고
 7. 작업 경로를 /hello로 변경
 8. docker container가 구동되면 java HelloDocker 를 실행
 
