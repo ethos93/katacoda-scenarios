@@ -6,12 +6,16 @@
   "details": {
     "steps": [
       {
-        "title": "Step 1",
+        "title": "Dockerfile 기본",
         "text": "step1.md"
       },
       {
-        "title": "Step 2",
+        "title": "Multi-Stage Dockerfile",
         "text": "step2.md"
+      },
+      {
+        "title": "Scratch 이미지",
+        "text": "step3.md"
       }
     ],
     "intro": {
