@@ -34,7 +34,7 @@ COPY HelloDocker.go .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflags="-w -s" -o /hello/HelloDocker
 
 FROM scratch as production-stage
-COPY --from=builder /hello /hello
+COPY --from=build-stage /hello/HelloDocker /hello/HelloDocker
 CMD ["/hello/HelloDocker"]
 </pre>
 
@@ -43,7 +43,7 @@ CMD ["/hello/HelloDocker"]
 3. $GOPATH/src/HelloDocker/ 경로에 HelloDocker.go 파일을 복사하고
 4. HelloDocker.go 를 컴파일 (Library가 Static Linking되도록 하고, Binary는 /hello 경로에 HelloDocker 로 생성)
 5. 아무것도 포함되지 않은 빈 이미지(Scratch)를 production-stage 로 정하고
-6. build-stage 이미지로의 /hello 디렉토리 전체를 production-stage로 복사하고
+6. build-stage 이미지로의 /hello/HelloDocker 파일을 production-stage로 복사하고
 7. docker container가 구동되면 /hello/HelloDocker 파일을 실행
 
 Dockerfile을 잘 수정하였다면, 이제 이미지를 생성합니다.
