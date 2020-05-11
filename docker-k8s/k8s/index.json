@@ -61,6 +61,6 @@
     "idePort": 23000
   },
   "backend": {
-    "imageid": "kubernetes-cluster:1.18"
+    "imageid": "kubernetes-cluster"
   }
 }
