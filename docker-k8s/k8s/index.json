@@ -53,14 +53,16 @@
       "text": "finish.md"
     }
   },
+  "files": [
+      "hellopod.yaml"
+  ],
   "environment": {
-    "uilayout": "terminal-terminal",
+    "uilayout": "editor-terminal",
     "hideHiddenFiles": true,
-    "uieditorpath": "/root/lab",
-    "showide": true,
-    "idePort": 23000
+    "uisettings": "yaml",
+    "uieditorpath": "/root/lab"
   },
   "backend": {
-    "imageid": "kubernetes-cluster"
+    "imageid": "kubernetes"
   }
 }
