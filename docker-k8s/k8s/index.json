@@ -55,7 +55,10 @@
   },
   "environment": {
     "uilayout": "terminal-terminal",
-    "hideHiddenFiles": true
+    "hideHiddenFiles": true,
+    "uieditorpath": "/root/lab",
+    "showide": true,
+    "idePort": 23000
   },
   "backend": {
     "imageid": "kubernetes-cluster-running:1.18"
