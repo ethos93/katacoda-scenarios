@@ -57,10 +57,7 @@
     "uilayout": "editor-terminal",
     "hideHiddenFiles": true,
     "uisettings": "yaml",
-    "uieditorpath": "/root/lab",
-    "terminals": [
-            {"name": "node", "target": "host02"}
-     ]
+    "uieditorpath": "/root/lab"
   },
   "backend": {
     "imageid": "kubernetes-cluster-running:1.18"
