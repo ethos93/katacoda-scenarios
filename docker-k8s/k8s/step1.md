@@ -5,9 +5,13 @@ Katacoda 에서 Kubernetes Cluster로 환경을 구성할 경우 Editor사용이
 (Cluster 환경에서 실습을 원하신다면, https://www.katacoda.com/tfogo/scenarios/k8s 에서 학습해 볼 수 있습니다.)
 
 현재 kubernetes 환경의 상태를 확인하기 위해서는,
+
 `kubectl cluster-info`{{execute}}
+
 `kubectl get nodes`{{execute}}
+
 `kubectl get pods -A`{{execute}}
+
 를 각각 실행시켜 보시면 됩니다.
 
 Status가 Ready와 Running으로 되어 있다면 kubernetes가 정상적으로 구동 중입니다.
