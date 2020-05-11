@@ -64,6 +64,6 @@
     "uieditorpath": "/root/lab"
   },
   "backend": {
-    "imageid": "kubernetes:1.18"
+    "imageid": "kubernetes"
   }
 }
