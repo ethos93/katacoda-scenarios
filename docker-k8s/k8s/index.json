@@ -54,9 +54,12 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "uilayout": "editor-terminal-split",
+    "hideHiddenFiles": true,
+    "uisettings": "yaml",
+    "uieditorpath": "/root/lab"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running"
+    "imageid": "kubernetes-cluster-running:1.18"
   }
 }
