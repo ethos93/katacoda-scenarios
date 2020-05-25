@@ -57,7 +57,7 @@ apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
 명령을 실행 시키면, "pod/httpd created" 라고 출력되면서 pod 이 만들어집니다.
 
-`kubectl get pods`{{execute}} 를 통해 생성된 Pod을 확인할 수 있습니다.
+`kubectl get pods`{{execute}} 를 통해 httpd Pod 하나가 생성된 것을 확인할 수 있습니다.
 
 ## ReplicaSet 생성
 앞서 Pod를 생성해 보았는데, Pod으로 생성하게 되면, Pod에 문제가 생겼을 경우 서비스가 중단될 수 있습니다.
@@ -106,6 +106,12 @@ template에는 Pod의 manifest가 그대로 들어갑니다.
 
 `kubectl get replicasets`{{execute}} 를 통해 생성된 ReplicaSet을 확인할 수 있으며, `kubectl get pods`{{execute}} 를 통해 3개의 Pod가 생성된 것을 확인할 수 있습니다.
 Pod의 이름은 ReplicaSet 이름 - hash 값으로 자동 생성됩니다.
+
+다시 Editor나 vi를 이용하여 replicaset.yaml에서 replicas 값을 3에서 5로 변경해 봅니다.
+`kubectl apply -f replicaset.yaml`{{execute}} 명령을 통해 변경한 값을 적용합니다.
+
+`kubectl get pods`{{execute}} 를 통해 Pod 개수가 5개로 변경된 것을 확인할 수 있습니다.
+
 
 ## Deployment 생성
 ReplicaSet을 통해 복제본을 여러개 생성시킬 수 있다는 것은 확인하였습니다.
