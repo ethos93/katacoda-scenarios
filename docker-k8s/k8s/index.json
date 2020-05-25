@@ -52,7 +52,14 @@
     },
     "finish": {
       "text": "finish.md"
-    }
+    },
+    "assets": {
+      "host01": [
+        {"file": "pod.yaml", "target": "/root/lab/", "chmod": "+x"},
+        {"file": "replicaset.yaml", "target": "/root/lab/", "chmod": "+x"},
+        {"file": "deployment.yaml", "target": "/root/lab/", "chmod": "+x"}
+      ]
+    },
   },
   "files": [
       "hellopod.yaml"
