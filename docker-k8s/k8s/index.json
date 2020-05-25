@@ -59,7 +59,7 @@
         {"file": "replicaset.yaml", "target": "/root/lab/", "chmod": "+x"},
         {"file": "deployment.yaml", "target": "/root/lab/", "chmod": "+x"}
       ]
-    },
+    }
   },
   "files": [
       "hellopod.yaml"
