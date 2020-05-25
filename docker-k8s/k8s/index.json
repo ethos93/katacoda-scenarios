@@ -6,45 +6,25 @@
   "details": {
     "steps": [
       {
-        "title": "Step 1",
+        "title": "워크로드",
         "code": "foreground.sh",
         "text": "step1.md"
       },
       {
-        "title": "Step 2",
+        "title": "서비스, 네트워킹",
         "text": "step2.md"
       },
       {
-        "title": "Step 3",
+        "title": "배포정책과 오토스케일링",
         "text": "step3.md"
       },
       {
-        "title": "Step 4",
+        "title": "스토리지",
         "text": "step4.md"
       },
       {
-        "title": "Step 5",
+        "title": "구성",
         "text": "step5.md"
-      },
-      {
-        "title": "Step 6",
-        "text": "step6.md"
-      },
-      {
-        "title": "Step 7",
-        "text": "step7.md"
-      },
-      {
-        "title": "Step 8",
-        "text": "step8.md"
-      },
-      {
-        "title": "Step 9",
-        "text": "step9.md"
-      },
-      {
-        "title": "Step 10",
-        "text": "step10.md"
       }
     ],
     "intro": {
@@ -54,9 +34,6 @@
       "text": "finish.md"
     }
   },
-  "files": [
-      "hellopod.yaml"
-  ],
   "environment": {
     "uilayout": "editor-terminal",
     "hideHiddenFiles": true,
