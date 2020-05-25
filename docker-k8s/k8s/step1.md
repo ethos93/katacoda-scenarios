@@ -102,7 +102,7 @@ template에는 Pod의 manifest가 그대로 들어갑니다.
 
 이제 `kubectl apply -f replicaset.yaml`{{execute}} 명령을 통해 ReplicaSet 을 생성합니다.
 
-명령을 실행 시키면, "pod/httpd-replicaset created" 라고 출력되면서 ReplicaSet 이 만들어집니다.
+명령을 실행 시키면, "replicaset.apps//httpd-replicaset created" 라고 출력되면서 ReplicaSet 이 만들어집니다.
 
 `kubectl get replicatsets`{{execute}} 를 통해 생성된 ReplicaSet를 확인할 수 있으며, `kubectl get pods`{{execute}} 를 통해 3개의 Pod가 생성된 것을 확인할 수 있습니다.
 Pod의 이름은 ReplicaSet 이름 - hash 값으로 자동 생성됩니다.
