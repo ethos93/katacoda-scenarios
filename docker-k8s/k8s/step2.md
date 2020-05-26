@@ -110,7 +110,7 @@ apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
 <pre>
 NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-httpd-nodeport-service   NodePort   10.107.189.63   &lt;none&gt;        8080:31973/TCP   37m
+httpd-nodeport-service   NodePort     10.107.189.63   &lt;none&gt;        8080:31973/TCP   37m
 </pre>
 
 CLUSTER-IP는 다르겠지만 위와 같은 형태로 출력이 됩니다.
