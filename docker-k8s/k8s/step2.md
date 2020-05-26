@@ -18,7 +18,7 @@ Replica 의 수를 변경한다거나)에 따라 새로 생성되기도, 없어�
 
 Kubernetes는 pod을 호출하기 위해 "서비스" 라는 object를 사용합니다.
 
-서비스의 Type에는 ClusterIP, NodePort, LoadBalancer 가 있으며 LoadBanaler는 Katacoda 환경에서 실습이 불가능하므로 ClusterIP와 NodePort에 대해 실습해 보도록 하겠습니다.
+서비스의 Type에는 ClusterIP, NodePort, LoadBalancer, ExternalName 이 있으며 LoadBanaler과 ExternalName은 Katacoda 환경에서 실습이 불가능하므로 ClusterIP와 NodePort에 대해 실습해 보도록 하겠습니다.
 
 참고로, 외부에서 Pod으로의 접근을 위해서는 NodePort, LoadBalancer Type을 사용하거나, Ingress를 사용해야 합니다.
 
