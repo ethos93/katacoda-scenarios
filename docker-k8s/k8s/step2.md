@@ -24,20 +24,43 @@ Kubernetes는 pod을 호출하기 위해 "서비스" 라는 object를 사용합�
 
 ClusterIP Type의 서비스를 생성해 보겠습니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `pod.yaml`{{open}} , `vi pod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+다음을 선택하여 에디터를 통해 파일을 열거나 `clusterip_svc.yaml`{{open}} , `vi clusterip_svc.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="clusterip.yaml" data-target="replace">apiVersion: v1
-kind: Pod
+<pre class="file" data-filename="clusterip_svc.yaml" data-target="replace">apiVersion: v1
+kind: Service
 metadata:
-  name: httpd
-  labels:
-    run: httpd
+  name: httpd-clusterip-service
 spec:
-  containers:
-  - image: ethos93/go-httpd:v1
-    imagePullPolicy: Always
-    name: httpd
-    ports:
-    - containerPort: 8080
-      protocol: TCP
+  selector:
+    app: httpd-replicaset
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
 </pre>
+
+Manifest를 살펴보면, Kind에는 Service를 지정하였고, Selector에 app: httpd-replicaset 을 지정하였는데, 이것은 앞에서 ReplicaSet 을 생성할 때 Pod의 Label과 일치 합니다. 이처럼 Label은 Service와 Pod을 연결시켜주는 매우 중요한 Key 이므로 반드시 일치시켜줘야만 합니다. 복수개의 Label을 지정한다면 좀더 세밀하게 매핑을 지정할 수도 있습니다.
+
+Type을 보면 ClusterIP로 지정되어 있으며, ClusterIP는 Service의 Default Type 이므로 생략해도 상관없습니다.
+
+apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
+
+`kubectl apply -f clusterip_svc.yaml`{{execute}}
+
+명령을 실행 시키면, "service/httpd-clusterip-service created" 라고 출력되면서 서비스가 만들어집니다.
+
+`kubectl get services`{{execute}} 를 통해 httpd-clusterip-service 라는 서비스가 하나가 생성된 것을 확인할 수 있습니다.
+
+<pre>
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+httpd-clusterip-service   ClusterIP   10.107.189.63   <none>        8080/TCP   37m
+</pre>
+
+CLUSTER-IP는 다르겠지만 위와 같은 형태로 출력이 됩니다.
+CLUSTER-IP는 Kubernetes cluster 내에서 사용가능한 IP이며 cluster 밖에서는 호출이 안됩니다.
+
+한번 호출해 보겠습니다. curl cluster-ip:8080 을 실행해 보시면, 응답이 없음을 확인할 수 있습니다.
+
+
+
