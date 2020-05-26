@@ -106,15 +106,21 @@ apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
 명령을 실행 시키면, "service/httpd-nodeport-service created" 라고 출력되면서 서비스가 만들어집니다.
 
-`kubectl get services`{{execute}} 를 통해 httpd-nodeport-service 라는 서비스가 하나가 생성된 것을 확인할 수 있습니다.
+`kubectl get services`{{execute}} 를 통해 httpd-nodeport-service 라는 서비스가 추가로 생성된 것을 확인할 수 있습니다.
 
 <pre>
 NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 httpd-nodeport-service   NodePort     10.107.189.63   &lt;none&gt;        8080:31973/TCP   37m
 </pre>
 
-CLUSTER-IP는 다르겠지만 위와 같은 형태로 출력이 됩니다.
-CLUSTER-IP는 Kubernetes cluster 내에서 사용가능한 IP이며 다른 Pod에서 해당 IP로 호출이 가능합니다.
+CLUSTER-IP와 PORT는 다르겠지만 위와 같은 형태로 출력이 됩니다.
+CLUSTER-IP는 clusterIP Type으로 생성했을 때와 동일하게 Kubernetes cluster 내에서 사용가능한 IP이며 다른 Pod에서 해당 IP로 호출이 가능합니다.
+NodePort Type으로 생성했을 때는 PORT(S) 부분에 8080 이외에 31973과 같이 30000번대의 Port가 추가로 보이는 것을 확인 할 수 있습니다.
+
+이것이 NodePort의 번호이고, 기본값으로는 30000-32767 중의 하나의 Port가 할당됩니다.
+Kubernetes Cluster를 구성하는 모든 Node에 동일한 Port가 오픈되며, 외부에서는 Node들 중 하나의 IP와 NodePort 번호를 통해 Pod에 접근할 수 있게 됩니다.
+
+
 
 또한, Pod 내부에서는 서비스 이름으로도 호출이 가능합니다. Kubernetes Cluster 내부에 DNS 서버(CoreDNS)가 존재하며, 서비스 이름으로 호출하면, DNS에서 서비스의 CLUSTER-IP를 반환해 주며, 이 IP로 호출이 되는 것입니다. (Pod의 IP를 반환하지 않습니다)
 
