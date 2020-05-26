@@ -109,7 +109,7 @@ apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 `kubectl get services`{{execute}} 를 통해 httpd-nodeport-service 라는 서비스가 하나가 생성된 것을 확인할 수 있습니다.
 
 <pre>
-NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 httpd-nodeport-service   NodePort     10.107.189.63   &lt;none&gt;        8080:31973/TCP   37m
 </pre>
 
