@@ -58,9 +58,20 @@ httpd-clusterip-service   ClusterIP   10.107.189.63   <none>        8080/TCP   3
 </pre>
 
 CLUSTER-IP는 다르겠지만 위와 같은 형태로 출력이 됩니다.
-CLUSTER-IP는 Kubernetes cluster 내에서 사용가능한 IP이며 cluster 밖에서는 호출이 안됩니다.
+CLUSTER-IP는 Kubernetes cluster 내에서 사용가능한 IP이며 다른 Pod에서 해당 IP로 호출이 가능합니다.
 
-한번 호출해 보겠습니다. curl cluster-ip:8080 을 실행해 보시면, 응답이 없음을 확인할 수 있습니다.
+또한, Pod 내부에서는 서비스 이름으로도 호출이 가능합니다. Kubernetes Cluster 내부에 DNS 서버(CoreDNS)가 존재하며, 서비스 이름으로 호출하면, DNS에서 IP를 반환해 주며, 이 IP로 호출이 되는 것입니다.
 
+CoreDNS는 Cluster내부에서만 사용이 가능하니, Debugging을 위한 Pod을 하나 생성해 보겠습니다. 아래 명령을 통해 debugging용 pod을 생성합니다.
+culr을 포함하고 있는 아주 작은 container image 입니다.
+
+`kubectl run curlpod --image=radial/busyboxplus:curl --command -- /bin/sh -c "while true; do echo hi; sleep 10; done"`{{execute}}
+
+curlpod 라는 pod 이 생성되었으니, 이제 curlpod 에서 서버스 이름으로 http 서버를 호출해 보겠습니다. (kubernetes 최신 버전에서는 pod으로 생성되나, 구 버전에서는 Deployment로 생성되기 때문에 pod의 이름이 curlpod-xxxxxx-xxxx 식으로 만들어져 있을 것입니다.
+
+kubectl exec -it curlpod이름 -- curl httpd-clusterip-service:8080 으로 호출해 보면, curlpod 안에서 curl 명령이 실행됩니다.
+
+응답이 정상적으로 오는 것을 확인할 수 있습니다. 동일한 exec 명령을 여러번 실행시켜 보면, 응답 중 hostname이 변하는 것도 확인할 수 있습니다.
+이것은, service 를 통해 replicaset의 pod들 중 하나에 roundrobin으로 호출되기 때문입니다.
 
 
