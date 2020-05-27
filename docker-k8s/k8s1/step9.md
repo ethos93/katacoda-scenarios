@@ -84,7 +84,7 @@ RollingUpdate를 통해 1개의 Pod 이미지가 교체된 뒤, 나머지 9개�
 
 앞서 만들었던 curlpod를 통해 php 서버가 잘 동작하는지 확인해 봅니다.
 
-`do kubectl exec -it curlpod -- curl httpd-nodeport-service`{{execute}}
+`kubectl exec -it curlpod -- curl httpd-nodeport-service`{{execute}}
 
 다음으로는 Horizontal Pod Autoscaler를 정의한 yaml파일을 생성해주어야합니다.
 
