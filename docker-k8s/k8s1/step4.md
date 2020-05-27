@@ -38,7 +38,7 @@ spec:
         imagePullPolicy: Always
         name: httpd-deployment
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           protocol: TCP
 </pre>
 
