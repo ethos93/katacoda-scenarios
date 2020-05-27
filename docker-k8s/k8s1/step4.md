@@ -19,7 +19,7 @@ metadata:
   labels:
     app: httpd-deployment
 spec:
-  replicas: 3
+  replicas: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
