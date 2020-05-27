@@ -22,12 +22,16 @@
         "text": "step4.md"
       },
       {
-        "title": "ClusterIP",
+        "title": "서비스",
         "text": "step5.md"
       },
       {
-        "title": "NodePort",
+        "title": "ClusterIP",
         "text": "step6.md"
+      },
+      {
+        "title": "NodePort",
+        "text": "step7.md"
       }
     ],
     "intro": {
