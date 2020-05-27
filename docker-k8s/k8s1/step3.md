@@ -27,7 +27,7 @@ spec:
         imagePullPolicy: Always
         name: httpd-replicaset
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           protocol: TCP
 </pre>
 
