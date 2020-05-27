@@ -32,6 +32,14 @@
       {
         "title": "NodePort",
         "text": "step7.md"
+      },
+      {
+        "title": "Deployment Strategies & Rollback",
+        "text": "step8.md"
+      },
+      {
+        "title": "Horizontal Pod Autoscaler",
+        "text": "step9.md"
       }
     ],
     "intro": {
