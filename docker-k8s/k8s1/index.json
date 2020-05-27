@@ -1,0 +1,49 @@
+{
+  "title": "Kubernetes Training 1",
+  "description": "Kubernetes Workload & Service",
+  "difficulty": "Beginner",
+  "time": "20 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "워크로드",
+        "text": "step1.md"
+      },
+      {
+        "title": "POD",
+        "text": "step2.md"
+      },
+      {
+        "title": "ReplicaSet",
+        "text": "step3.md"
+      },
+      {
+        "title": "Deployment",
+        "text": "step4.md"
+      },
+      {
+        "title": "ClusterIP",
+        "text": "step5.md"
+      },
+      {
+        "title": "NodePort",
+        "text": "step6.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "hideHiddenFiles": true,
+    "uisettings": "yaml",
+    "uieditorpath": "/root/lab"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running"
+  }
+}
