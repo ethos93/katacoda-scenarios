@@ -13,7 +13,7 @@ metadata:
   labels:
     app: httpd-replicaset
 spec:
-  replicas: 10
+  replicas: 3
   selector:
     matchLabels:
       app: httpd-replicaset
