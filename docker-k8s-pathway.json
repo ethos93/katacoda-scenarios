@@ -13,9 +13,9 @@
       "description": "Create Dockerfile"
     },
     {
-      "course_id": "k8s",
-      "title": "Kubernetes Training",
-      "description": "Kubernetes Training with katacoda"
+      "course_id": "k8s1",
+      "title": "Kubernetes Training 1",
+      "description": "Kubernetes Workload & Service"
     }
   ]
 }
