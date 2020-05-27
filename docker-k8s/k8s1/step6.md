@@ -11,8 +11,8 @@ spec:
     app: httpd-replicaset
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
   type: ClusterIP
 </pre>
 
@@ -30,7 +30,7 @@ apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
 <pre>
 NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-httpd-clusterip-service   ClusterIP   10.107.189.63   &lt;none&gt;        8080/TCP   37m
+httpd-clusterip-service   ClusterIP   10.107.189.63   &lt;none&gt;        80/TCP     37m
 </pre>
 
 CLUSTER-IP는 다르겠지만 위와 같은 형태로 출력이 됩니다.
@@ -45,7 +45,7 @@ culr을 포함하고 있는 아주 작은 container image 입니다.
 
 curlpod 라는 pod 이 생성되었으니, 이제 curlpod 에서 서버스 이름으로 http 서버를 호출해 보겠습니다.
 
-`kubectl exec -it curlpod -- curl httpd-clusterip-service:8080`{{execute}} 으로 호출해 보면, curlpod 안에서 curl 명령이 실행됩니다.
+`kubectl exec -it curlpod -- curl httpd-clusterip-service`{{execute}} 으로 호출해 보면, curlpod 안에서 curl 명령이 실행됩니다.
 
 응답이 정상적으로 오는 것을 확인할 수 있습니다. 동일한 exec 명령을 여러번 실행시켜 보면, 응답 중 hostname이 변하는 것도 확인할 수 있습니다.
 이것은, 서비스를 통해 replicaset의 pod들 중 하나에 roundrobin으로 호출되기 때문입니다.
