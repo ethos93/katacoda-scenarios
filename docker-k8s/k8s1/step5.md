@@ -7,7 +7,7 @@ Pod를 구성하는 Container의 이미지가 ethos93/go-httpd 였으며, 이것
 
 curl 명령을 사용하여 http 서비스를 호출해 보세요. (pod ip는 pod가 생성될 때마다 달라지니 다음과 같이 호출 하시면 됩니다.)
 
-curl {pod ip}:8080
+curl {pod ip}
 
 "This version is v1 and hostname is httpd" 과 같이 버전과 함께 hostname이 출력됩니다.
 Deployment로 배포된 pod도 호출해 보시면 hostname이 다른 것을 확인할 수 있습니다.
