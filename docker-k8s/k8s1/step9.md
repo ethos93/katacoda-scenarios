@@ -68,7 +68,7 @@ spec:
             cpu: "200m"
 </pre>
 
-replicas 를 1로 변경해서 초기 1개의 Pod만 생성되게 한 뒤, image 를 ethos93/myphp:3.0 로 변경하고, ContainerPort를 80 으로 변경합니다.
+replicas 를 1로 변경해서 초기 1개의 Pod만 생성되게 한 뒤, image 를 ethos93/myphp:3.0 로 변경합니다.
 그리고, Containers 에 resources를 추가하고, 초기 요청 memory와 cpu 사용량을 지정하고 제한 memory와 cpu 사용량을 지정해 줍니다.
 
 Kubernetes의 CPU 1개는 클라우드 공급자용 vCPU/Core 1개 와 베어메탈 인텔 프로세서에서의 1개 하이퍼스레드 에 해당합니다. 또한 소수점도 허용됩니다.
@@ -81,6 +81,10 @@ Deployment를 수정하였다면, 변경사항을 반영합니다.
 RollingUpdate를 통해 1개의 Pod 이미지가 교체된 뒤, 나머지 9개의 Pod은 자동으로 종료될 것입니다.
 
 `kubectl get pods`{{execute}}
+
+앞서 만들었던 curlpod를 통해 php 서버가 잘 동작하는지 확인해 봅니다.
+
+`do kubectl exec -it curlpod -- curl httpd-nodeport-service`{{execute}}
 
 다음으로는 Horizontal Pod Autoscaler를 정의한 yaml파일을 생성해주어야합니다.
 
@@ -115,7 +119,7 @@ spec:
 
 적용 후에 `kubectl get hpa -o wide`{{execute}} 를 실행해 보면, 현재 적용되어 있는 hpa를 확인할 수 있습니다.
 
-앞서 만들었던 curlpod를 통해 php 서비스를 지속적으로 호출하여 부하를 발생시킵니다.
+curlpod를 통해 php 서비스를 지속적으로 호출하여 부하를 발생시킵니다.
 
 `while true; do kubectl exec -it curlpod -- curl httpd-nodeport-service; done`{{execute}}
 
