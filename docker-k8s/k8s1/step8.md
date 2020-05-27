@@ -17,7 +17,7 @@ ethos93/go-httpd:v1 으로 되어 있는 부분을 ethos93/go-httpd:v2 로 tag�
 이전에 생성한 debugging용 pod과 반복적으로 수행되는 curl 명령을 통해 Image의 버전이 바뀐것을 확인해 보도록 하겠습니다.
 다음 명령을 실행하면, 0.5초에 한번씩 curl 명령을 통해 httpd-nodeport-service 를 호출합니다.
 
-`while sleep 0.5; do kubectl exec -it curlpod -- curl httpd-nodeport-service:8080; done`{{execute}}
+`while sleep 0.5; do kubectl exec -it curlpod -- curl httpd-nodeport-service; done`{{execute}}
 
 응답메시지를 보면, v1으로 응답을 주던 것들이 점차 v2로 응답을 주는 것을 확인할 수 있습니다.
 
@@ -43,6 +43,6 @@ Rollback을 위해서 다음 명령을 실행하면, Revision 1로 돌아갈 수
 
 다시한번 curl 명령을 통해 v1로 Rollback이 잘 이루어 지는지 확인해 보겠습니다.
 
-`while sleep 0.5; do kubectl exec -it curlpod -- curl httpd-nodeport-service:8080; done`{{execute}}
+`while sleep 0.5; do kubectl exec -it curlpod -- curl httpd-nodeport-service; done`{{execute}}
 
 역시 순차적으로 v1으로 변경이 되는 것을 확인할 수 있습니다.
