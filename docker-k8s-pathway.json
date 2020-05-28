@@ -16,6 +16,11 @@
       "course_id": "k8s1",
       "title": "Kubernetes Training 1",
       "description": "Kubernetes Workload & Service"
+    },
+    {
+      "course_id": "k8s2",
+      "title": "Kubernetes Training 2",
+      "description": "Kubernetes Configuration & Storage"
     }
   ]
 }
