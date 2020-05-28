@@ -4,6 +4,10 @@ ConfigMap은 Key:Value 형식으로 저장이 됩니다.
 
 ## ConfigMap from Literal
 
+첫번째 실습을 위해 디렉토리를 이동합니다.
+
+`cd /root/lab`{{execute}}
+
 문자로 생성하는 방법은 kubectl create configmap 명령을 사용하여 다음과 같이 생성할 수 있습니다.
 
 kubectl create configmap configmap이름 --from-literal=key=value
@@ -20,7 +24,7 @@ myconfigmap 이라는 이름의 configmap에 key는 company, value는 samsung �
 
 다음을 선택하여 에디터를 통해 파일을 열거나 `myconfigmapyaml.yaml`{{open}} , `vi myconfigmapyaml.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="myconfigyaml.yaml" data-target="replace">apiVersion: v1
+<pre class="file" data-filename="myconfigmapyaml.yaml" data-target="replace">apiVersion: v1
 kind: ConfigMap
 metadata:
   name: myconfigmapyaml
