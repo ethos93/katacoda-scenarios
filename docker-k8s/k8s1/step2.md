@@ -11,7 +11,7 @@ kind: Pod
 metadata:
   name: httpd
   labels:
-    run: httpd
+    app: httpd
 spec:
   containers:
   - image: ethos93/go-httpd:v1
