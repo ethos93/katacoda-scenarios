@@ -123,7 +123,7 @@ spec:
   volumes:
     - name: secret-volume
       secret:
-        name: file-secret
+        secretName: file-secret
   restartPolicy: Never
 </pre>
 
