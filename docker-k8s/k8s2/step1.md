@@ -9,5 +9,7 @@ Kubenetes는 이러한 변수들을 ConfigMap과 Secret 을 통해 관리 할 �
 환경(Namespace) 별로 ConfigMap이나 Secret을 생성해 놓으면, 해당 환경에서 구동되는 Pod들은 각각의 환경에서 정의해 놓은 변수값을 사용할 수 있도록 하는 것입니다.
 
 ConfigMap이나 Secret에서 정의한 값을 Pod로 넘기는 방법에는 크게 두가지가 있습니다.
+
 . 정의해놓은 값을 Pod의 환경 변수로 넘기는 방법
+
 . 정의해놓은 값을 Pod의 디스크 볼륨으로 마운트하는 방법
