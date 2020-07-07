@@ -12,7 +12,7 @@ ConfigMap은 Key:Value 형식으로 저장이 됩니다.
 
 kubectl create configmap configmap이름 --from-literal=key=value
 
-myconfigmap 이라는 이름의 configmap에 key는 company, value는 samsung 이라고 만들고 싶다면,
+literal-config 이라는 이름의 configmap에 key는 company, value는 samsung 이라고 만들고 싶다면,
 
 `kubectl create configmap literal-config --from-literal=company=Samsung`{{execute}} 로 실행하면 됩니다.
 
