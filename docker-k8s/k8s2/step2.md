@@ -35,11 +35,11 @@ myconfigmap 이라는 이름의 configmap에 key는 company, value는 samsung �
 
 다음을 선택하여 에디터를 통해 파일을 열거나 `app.properties`{{open}} , `vi app.properties`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-<pre class="file" data-filename="app.properties" data-target="replace">database.url = 192.168.0.88
-database.port = 5432
-database.db = employee
-database.user = hojoon
-database.password = elqlvotmdnjem
+<pre class="file" data-filename="app.properties" data-target="replace">database.url=192.168.0.88
+database.port=5432
+database.db=employee
+database.user=hojoon
+database.password=elqlvotmdnjem
 </pre>
 
 이제 이 파일을 통해 configmap을 만들어 보겠습니다.
@@ -131,7 +131,11 @@ spec:
 </pre>
 
 Manifest를 보면, 아주 가벼운 busybox shell 만 포함하고 있는 이미지를 사용하며, kubectl cli를 통해 생성했던, literal-config에서 company키에 해당하는 value를 COMPANY 환경 변수에 담아주고, yaml을 통해 생성했던, yaml-config에서 location과 business key에 해당하는 value를 LOCATION과 BUSINESS 환경 변수에 담아주도록 하였습니다.
-그리고, 파일로 부터 생성한 file-env-config의 database.url을 DBURL 환경 변수에 담아 주고, 마지막으로 file-config는 Volume으로 정의한 후 /etc/config 에 Mount 시켰습니다.
+그리고, 파일로 부터 생성한 file-env-config의 database.url을 DBURL 환경 변수에 담아 주고, 마지막으로 file-config는 Volume으로 정의한 후 /etc/config 경로에 app.properties 파일로 Mount 시켰습니다.
+
+이제 작성한 Manifest를 통해 Pod을 생성합니다.
+
+`kubectl apply -f configmappod.yaml`{{execute}}
 
 해당 pod의 환경변수에 어떤 값들이 들어갔는지 확인해 보겠습니다.
 
@@ -139,5 +143,5 @@ Manifest를 보면, 아주 가벼운 busybox shell 만 포함하고 있는 이�
 
 마지막으로, Volume으로 Mount된 파일의 내용도 확인해 보겠습니다.
 
-`kubectl exec -it configmap-pod -- cat /etc/config`{{execute}} 를 실행해 봅니다.
+`kubectl exec -it configmap-pod -- cat /etc/config/app.properties`{{execute}} 를 실행해 봅니다.
 
