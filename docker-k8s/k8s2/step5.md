@@ -8,7 +8,7 @@ Pod가 제거된다면 emptyDir 볼륨 내의 데이터는 영구적으로 삭�
 
 실습을 진행하기 위해 제가 사전에 만들어 놓은 Docker Image 와 Apache httpd Image를 사용할 예정입니다.
 
-첫번째로 제가 만들어 놓은 이미지의 소스는 https://github.com/ethos93/fortunes 에 있으며, 이미지는 Docker Hub에 Push 되어 있습니다.  https://hub.docker.com/repository/docker/ethos93/fortune
+첫번째로 제가 만들어 놓은 이미지의 소스는 GitHub(https://github.com/ethos93/fortunes)에 있으며, 이미지는 Docker Hub(https://hub.docker.com/repository/docker/ethos93/fortune)에 Push 되어 있습니다.
 
 소스에는 shell script와 Docker 파일이 있으며, fortuneloop.sh 라는 shell script는 Ubuntu의 Fortune package를 사용하여 10초에 한번씩 명언(?)을 /var/htdocs/index.html 파일로 저장하는 기능을 하도록 만들었습니다.
 
