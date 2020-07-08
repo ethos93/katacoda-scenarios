@@ -8,16 +8,16 @@ Pod가 제거된다면 emptyDir 볼륨 내의 데이터는 영구적으로 삭�
 
 실습을 진행하기 위해 제가 사전에 만들어 놓은 Docker Image 와 Apache httpd Image를 사용할 예정입니다.
 
-첫번째로 제가 만들어 놓은 이미지의 소스는 GitHub(https://github.com/ethos93/fortunes)에 있으며, 이미지는 Docker Hub(https://hub.docker.com/repository/docker/ethos93/fortune)에 Push 되어 있습니다.
+첫번째로 제가 만들어 놓은 이미지의 소스는 GitHub( https://github.com/ethos93/fortunes )에 있으며, 이미지는 Docker Hub( https://hub.docker.com/repository/docker/ethos93/fortune )에 Push 되어 있습니다.
 
-소스에는 shell script와 Docker 파일이 있으며, fortuneloop.sh 라는 shell script는 Ubuntu의 Fortune package를 사용하여 10초에 한번씩 명언(?)을 /var/htdocs/index.html 파일로 저장하는 기능을 하도록 만들었습니다.
+소스에는 shell script와 Docker 파일이 있으며, fortuneloop.sh 라는 shell script는 Ubuntu의 Fortune package를 사용하여 2초에 한번씩 명언(?)을 /var/htdocs/index.html 파일로 저장하는 기능을 하도록 만들었습니다.
 
 <pre class="file">
 while :
 do
   echo $(date) Writing fortune to /var/htdocs/index.html
   /usr/games/fortune > /var/htdocs/index.html
-  sleep 10
+  sleep 2
 done
 </pre>
 
@@ -64,7 +64,7 @@ Apache Httpd 이미지를 사용하는 web-server Container에서는 html Volume
 
 Container를 두개 포함하고 있는 Pod 가 생성되면서, emptyDir 볼륨도 생성이 됩니다.
 
-이후 내부에 Container 2개가 생성되면서 html-generator Container는 10초에 한번씩 명언을 emptyDir 볼륨에 index.html로 저장하고, web-server Container는 emptyDir 볼륨의 index.html를 웹서비스로 제공하게 됩니다.
+이후 내부에 Container 2개가 생성되면서 html-generator Container는 2초에 한번씩 명언을 emptyDir 볼륨에 index.html로 저장하고, web-server Container는 emptyDir 볼륨의 index.html를 웹서비스로 제공하게 됩니다.
 
 Pod이 정상적으로 생성되었는지 확인 후 여기에 연결할 서비스도 만들어 보겠습니다.
 
@@ -94,7 +94,7 @@ NodePort Service 에 대한 Menifest 입니다.
 
 Service가 생성되었으니, 이제 nodePort를 확인하고 한번 호출해 보겠습니다.
 
-curl localhost:노드포트 를 실행하면 10초마다 달라지는 출력을 확인할 수 있습니다.
+curl 127.0.0.1:노드포트 를 실행하면 10초마다 달라지는 출력을 확인할 수 있습니다.
 
 아래 링크를 사용하면 브라우저에서도 확인 가능합니다. (새로 열리는 창에서 Display port를 NodePort로 지정하시면 됩니다.)
 
