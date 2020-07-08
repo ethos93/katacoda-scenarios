@@ -95,3 +95,7 @@ NodePort Service 에 대한 Menifest 입니다.
 Service가 생성되었으니, 이제 nodePort를 확인하고 한번 호출해 보겠습니다.
 
 curl localhost:노드포트 를 실행하면 10초마다 달라지는 출력을 확인할 수 있습니다.
+
+아래 링크를 사용하면 브라우저에서도 확인 가능합니다. (새로 열리는 창에서 Display port를 NodePort로 지정하시면 됩니다.)
+
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com
