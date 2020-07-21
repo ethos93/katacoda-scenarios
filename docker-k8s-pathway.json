@@ -9,7 +9,12 @@
     },
     {
       "course_id": "docker2",
-      "title": "Docker Training 2",
+      "title": "Docker Training 1",
+      "description": "Docker Command"
+    },
+    {
+      "course_id": "docker3",
+      "title": "Docker Training 3",
       "description": "Create Dockerfile"
     },
     {
