@@ -1,21 +1,17 @@
 {
   "title": "Docker Training 2",
-  "description": "Create Dockerfile",
+  "description": "Docker Command",
   "difficulty": "Beginner",
   "time": "10 minutes",
   "details": {
     "steps": [
       {
-        "title": "Dockerfile 기본",
+        "title": "pull, run",
         "text": "step1.md"
       },
       {
-        "title": "Multi-Stage Dockerfile",
+        "title": "logs, exec",
         "text": "step2.md"
-      },
-      {
-        "title": "Scratch 이미지",
-        "text": "step3.md"
       }
     ],
     "intro": {
@@ -25,15 +21,12 @@
     "finish": {
       "text": "finish.md"
     }
-  },
-  "files": [
-      "HelloDocker.java", "Dockerfile", "HelloDocker.go"
-  ],
+  }
   "environment": {
-    "uilayout": "editor-terminal",
     "hideHiddenFiles": true,
-    "uisettings": "dockerfile",
-    "uieditorpath": "/root/lab"
+    "showdashboard": true,
+    "dashboards": [{"name": "Port 80", "port": 80}],
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "ubuntu"
