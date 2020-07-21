@@ -32,11 +32,7 @@ Jenkins를 사용해 보신 분들은 아시겠지만, Jenkins는 Web UI로 구�
 
 그리고, foreground 로 Docker process가 구동되다보니, 터미널을 종료하면 process도 함께 종료됩니다.
 
-우선 구동 중인 process 를 종료하기 위해 
-<pre>
-&#x3C;kbd&#x3E;Ctrl&#x3C;/kbd&#x3E;+&#x3C;kbd&#x3E;C&#x3C;/kbd&#x3E;
-</pre>
-를 통해 process 를 종료시킵니다.
+우선 구동 중인 process 를 종료하기 위해 Ctrl+C 를 통해 process 를 종료시킵니다.
 
 Container에 대한 확인은 ps 이며, 특히 종료된 conatiner를 포함한 확인은 -a 옵션을 추가하면 됩니다.
 
