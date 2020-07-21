@@ -1,4 +1,4 @@
 #!/bin/bash
 
 docker rmi -f $(docker images -aq)
-docker volume prune
+docker volume prune -f
