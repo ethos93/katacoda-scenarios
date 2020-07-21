@@ -1,37 +1,53 @@
-Web UI로 접속을 해 보면, Unlock Jenkins 라는 화면이 표시되는 것을 확인할 수 있습니다.
+이전 Step에서 Java Application을 포함하는 docker 이미지를 생성해 보았는데,
+base image로 java8을 사용하였기 때문에, Compiler를 포함하여 Java JDK가 모두 포함되어 이미지의 크기가 큽니다.
 
-Jenkins는 처음 구동될 때, 관리자에 의해 안전하게 설치되는 것을 확인하기 위해 초기 admin password를 log 와 특정 파일에 기록을 합니다.
+docker는 multi-stage build 기능을 제공하기 때문에 최종 docker 이미지에는 binary만 포함될 수 있도록 할 수가 있습니다.
 
-하지만 우리는 -d 옵션을 구동을 시켰기 때문에 화면상에 log가 출력되지 않았습니다.
+HelloDocker.java 파일은 그대로 두고 Dockerfile만 수정해 보겠습니다.
 
-# docker logs
+## Dockerfile 수정
+Dockerfile을 아래와 같이 수정합니다.
 
-이제 Container에서 출력되는 log를 확인할 수 있는 방법을 알아보겠습니다.
+역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
+`vi Dockerfile`{{execute}}
 
-logs 라는 command를 사용하면 됩니다.
+<pre class="file" data-filename="Dockerfile" data-target="replace">FROM openjdk:8 as build-stage
+COPY HelloDocker.java /hello/
+WORKDIR /hello
+RUN javac HelloDocker.java
 
-`docker logs myjenkins`{{execute}}
+FROM openjdk:8-jre as production-stage
+COPY --from=build-stage /hello/HelloDocker.class /hello/HelloDocker.class
+WORKDIR /hello
+CMD ["java","HelloDocker"]
+</pre>
 
-위의 명령을 실행하면 conatiner에서 system out 이나 system error로 출력되는 log를 확인할 수 있습니다. -f 옵션을 함께 사용하면 출력되는 로그들을 계속 확인도 가능합니다.
+1. openjdk8이 포함된 이미지를 build-stage 로 정하고
+2. /hello 경로에 HelloDocker.java 파일을 복사하고
+3. /hello 경로로 이동한 뒤
+4. HelloDocker.java 를 컴파일한뒤
+5. openjdk8의 jre만 포함된 이미지를 production-stage 로 정하고
+6. build-stage 이미지로의 /hello/HelloDocker.class 파일을 production-stage로 복사하고
+7. 작업 경로를 /hello로 변경
+8. docker container가 구동되면 java HelloDocker 를 실행
 
-스크롤을 올려보시면 install을 계속해서 진행할 수 있는 password가 보일 것입니다.
+Dockerfile을 잘 수정하였다면, 이제 이미지를 생성합니다.
 
-# docker exec
+## docker 이미지 생성
+hellodocker이미지를 v2 tag를 붙여서 생성합니다.
 
-Web UI에 출력된 내용을 다시 보시면 log 에서 찾거나 /var/jenkins_home/secrets/initialAdminPassword 이 파일을 확인하라고 되어 있습니다.
+`docker build -t hellodocker:v2 .`{{execute}}
 
-이번에는 container 내부의 명령을 실행하는 방법을 알아보겠습니다.
+출력되는 로그를 보시면, build-stage를 위한 Base Image는 이미 이전에 받았기 때문에, production-stage를 위한 Base Image를 Pull 한 뒤에 Dockerfile에 명시된 대로, 진행됩니다.
 
-exec 라는 command를 사용하면 됩니다.
+## docker 이미지 확인
+hellodocker 이미지가 정상적으로 생성 되었는지 확인합니다.
 
-`docker exec myjenkins cat /var/jenkins_home/secrets/initialAdminPassword`{{execute}}
+`docker images`{{execute}}
 
-위의 명령을 실행하면 container 내부에서 cat /var/jenkins_home/secrets/initialAdminPassword 를 실행한 결과가 출력됩니다.
+v1 과 v2 는 Java Application은 동일하지만, base image의 차이때문에 이미지 전체의 사이즈가 크게 차이가 납니다.
+이와 같이 어떻게 Dockerfile를 작성하느냐에 따라 최종 이미지의 사이즈가 달라질 수 있으며, 이러한 차이가 이미지를 생성할때, Registry에 Push할때, Pull할때 네트워크 및 스토리지, 소요 시간등의 차이를 가져오기 때문에 가급적 이미지를 최소화 할 수 있도록 하는 노력이 필요합니다.
 
-만약에 container 내부를 terminal을 통해 접속하고자 한다면, -it 옵션을 추가로 사용할 수 있습니다.
+생성된 이미지가 잘 실행되는지도 확인합니다.
 
-이제 확인된 password를 Web UI에 입력하여 jenkins 설치를 완료해 봅니다.
-
-마지막으로, volume에 jenkins 파일들이 생성되었는지도 확인해 봅니다.
-
-`ls -la /var/lib/docker/volumes/myvolume/_data`{{execute}}
+`docker run hellodocker:v2`{{execute}}
