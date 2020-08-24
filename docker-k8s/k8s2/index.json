@@ -6,20 +6,16 @@
   "details": {
     "steps": [
       {
-        "title": "Deployment",
+        "title": "Preparation for practice",
         "text": "step1.md"
       },
       {
-        "title": "NodePort",
+        "title": "Deployment Strategies & Rollback",
         "text": "step2.md"
       },
       {
-        "title": "Deployment Strategies & Rollback",
-        "text": "step3.md"
-      },
-      {
         "title": "Horizontal Pod Autoscaler",
-        "text": "step4.md"
+        "text": "step3.md"
       }
     ],
     "intro": {
