@@ -1,29 +1,45 @@
 {
-  "title": "Kubernetes Training 2",
-  "description": "Kubernetes Configuration & Storage",
+  "title": "Kubernetes Training 1",
+  "description": "Kubernetes Workload & Service",
   "difficulty": "Beginner",
   "time": "20 minutes",
   "details": {
     "steps": [
       {
-        "title": "Configuration",
+        "title": "워크로드",
         "text": "step1.md"
       },
       {
-        "title": "ConfigMap",
+        "title": "POD",
         "text": "step2.md"
       },
       {
-        "title": "Secret",
+        "title": "ReplicaSet",
         "text": "step3.md"
       },
       {
-        "title": "Storage",
+        "title": "Deployment",
         "text": "step4.md"
       },
       {
-        "title": "Volume",
+        "title": "서비스",
         "text": "step5.md"
+      },
+      {
+        "title": "ClusterIP",
+        "text": "step6.md"
+      },
+      {
+        "title": "NodePort",
+        "text": "step7.md"
+      },
+      {
+        "title": "Deployment Strategies & Rollback",
+        "text": "step8.md"
+      },
+      {
+        "title": "Horizontal Pod Autoscaler",
+        "text": "step9.md"
       }
     ],
     "intro": {
@@ -31,6 +47,18 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "aggregated-metrics-reader.yaml", "target": "/root/metrics-server"},
+        {"file": "auth-delegator.yaml", "target": "/root/metrics-server"},
+        {"file": "auth-reader.yaml", "target": "/root/metrics-server"},
+        {"file": "metrics-apiservice.yaml", "target": "/root/metrics-server"},
+        {"file": "metrics-server-deployment.yaml", "target": "/root/metrics-server"},
+        {"file": "metrics-server-pdb.yaml", "target": "/root/metrics-server"},
+        {"file": "metrics-server-service.yaml", "target": "/root/metrics-server"},
+        {"file": "resource-reader.yaml", "target": "/root/metrics-server"}
+      ]
     }
   },
   "environment": {

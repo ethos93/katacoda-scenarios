@@ -1,143 +1,51 @@
-Secret은 ConfigMap과 동일하게 Key:Value 형식으로 저장이 됩니다.
+앞서 Pod를 생성해 보았는데, Pod으로 생성하게 되면, Pod에 문제가 생겼을 경우 서비스가 중단될 수 있습니다.
+물론, Kubernetes는 문제가 생긴 Pod을 종료시키고 새로운 Pod를 생성 시키는 등 자동화 되어 있긴 합니다.
+하지만, Kubernetes가 Pod의 문제를 인지하고, 새로운 Pod를 생성하여 서비스가 다시 시작될 때 까지는 서비스가 불가능하기 때문에, Production 환경에서는 반드시 복수개의 Pod을 생성하여 중단 없는 서비스를 제공할 필요가 있습니다.
 
-차이점은, 저장될 때 base64 encoding이 되어서 저장된다는 점입니다. 사실 암호화되어 저장되는 것도 아니고 단순히 base64 encoding만 되기 때문에 안전하다고 할 수는 없으나 공격자(?)에게는 혼란을 줄 수 있습니다.
+이를 위해 ReplicatSet이라는 Object가 있습니다. ReplicatSet를 생성해 보도록 하겠습니다.
 
-## Secret from Literal
+다음을 선택하여 에디터를 통해 파일을 열거나 `replicaset.yaml`{{open}} , `vi replicaset.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
-문자로 생성하는 방법은 kubectl create secret generic 명령을 사용하여 다음과 같이 생성할 수 있습니다.
-
-kubectl create secret generic secret이름 --from-literal=key=value
-
-literal-secret 이라는 이름의 secret에 key는 company, value는 samsung 이라고 만들고 싶다면,
-
-`kubectl create secret generic literal-secret --from-literal=company=Samsung`{{execute}} 로 실행하면 됩니다.
-
-원하는대로 잘 생성되었는지는 describe를 통해 확인 가능합니다.
-
-`kubectl describe secret literal-secret`{{execute}}
-
-configmap 과 다르게 key는 노출되지만, value는 size만 표시 됩니다.
-
-value까지 확인하려면 get 명령을 사용하면 됩니다.
-
-`kubectl get secret literal-secret -o yaml`{{execute}}
-
-base64 encoding이 된 value 값을 확인할 수 있습니다.
-
-## Secret from File
-
-파일을 통해 생성하는 방법은 동일하게 kubectl create secret generic 명령을 사용하며 Option이 조금 다릅니다.
-
---from-file=파일명 을 사용하거나 --from-env-file=파일명 을 사용하는 것입니다.
-
---from-file 을 사용하면, key 는 파일명이 되고 value는 파일의 내용 자체가 됩니다.
---from-env-file 을 사용하면, 파일내에 key=value로 선언되어 있는 것들이 각각의 data로 secret에 저장이 됩니다.
-
-앞서 configmap에서 작성한 파일을 통해 secret을 만들어 보겠습니다.
-
-먼저 --from-file 을 사용하여 file-secret 라는 이름의 secret을 만듭니다.
-
-`kubectl create secret generic file-secret --from-file=./app.properties`{{execute}}
-
-다음으로 --from-env-file 을 사용하여 file-env-secret 라는 이름의 configmap을 만듭니다.
-
-`kubectl create secret generic file-env-secret --from-env-file=./app.properties`{{execute}}
-
-두개의 secret 을 만들었고, 앞에서와 동일하게 각각의 secret을 describe를 통해 확인해 보겠습니다.
-
-`kubectl describe secret file-secret`{{execute}}
-
-`kubectl describe secret file-env-secret`{{execute}}
-
-## Secret from Yaml
-
-yaml 파일로도 생성할 수 있으며, key:value를 여러쌍 포함시킬 수도 있습니다.
-
-단, configmap과 달리 secret을 생성할 때는, value를 base64 encoding한 값으로 작성해야만 합니다.
-
-다음을 선택하여 에디터를 통해 파일을 열거나 `yaml-secret.yaml`{{open}} , `vi yaml-secret.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
-
-<pre class="file" data-filename="yaml-secret.yaml" data-target="replace">apiVersion: v1
-kind: Secret
+<pre class="file" data-filename="replicaset.yaml" data-target="replace">apiVersion: apps/v1
+kind: ReplicaSet
 metadata:
-  name: yaml-secret
-data:
-  location: SmFtc2ls
-  business: SVRTZXJ2aWNl
-</pre>
-
-location의 value는 Jamsil 을 base64 encoding 한 값이며, business의 value는 ITService를 base64 encoding 한 값입니다.
-
-`echo -n 'Jamsil' | base64`{{execute}}
-
-`echo -n 'ITService' | base64`{{execute}}
-
-작성된 yaml을 적용하겠습니다.
-`kubectl apply -f yaml-secret.yaml`{{execute}}
-
-동일하게 describe로 확인해 봅니다.
-
-`kubectl describe secret yaml-secret`{{execute}}
-
-## Secret의 사용
-
-Secret은 Pod에서 환경변수로 넘길수가 있습니다.
-
-Secret의 Key와 Value를 Pod으로 전달하는 yaml를 작성해 보겠습니다.
-
-다음을 선택하여 에디터를 통해 파일을 열거나 `secretpod.yaml`{{open}} , `vi secretpod.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
-
-<pre class="file" data-filename="secretpod.yaml" data-target="replace">apiVersion: v1
-kind: Pod
-metadata:
-  name: secret-pod
+  name: httpd-replicaset
+  labels:
+    app: httpd-replicaset
 spec:
-  containers:
-    - name: secret-container
-      image: k8s.gcr.io/busybox
-      command: [ "/bin/sh", "-c", "while true; do echo hi; sleep 10; done" ]
-      env:
-        - name: COMPANY
-          valueFrom:
-            secretKeyRef:
-              name: literal-secret
-              key: company
-        - name: LOCATION
-          valueFrom:
-            secretKeyRef:
-              name: yaml-secret
-              key: location
-        - name: BUSINESS
-          valueFrom:
-            secretKeyRef:
-              name: yaml-secret
-              key: business
-        - name: DBURL
-          valueFrom:
-            secretKeyRef:
-              name: file-env-secret
-              key: database.url
-      volumeMounts:
-      - name: secret-volume
-        mountPath: /etc/config
-  volumes:
-    - name: secret-volume
-      secret:
-        secretName: file-secret
-  restartPolicy: Never
+  replicas: 3
+  selector:
+    matchLabels:
+      app: httpd-replicaset
+  template:
+    metadata:
+      labels:
+        app: httpd-replicaset
+    spec:
+      containers:
+      - image: ethos93/go-httpd:v1
+        imagePullPolicy: Always
+        name: httpd-replicaset
+        ports:
+        - containerPort: 80
+          protocol: TCP
 </pre>
 
-Manifest를 보면, 아주 가벼운 busybox shell 만 포함하고 있는 이미지를 사용하며, kubectl cli를 통해 생성했던, literal-secret에서 company키에 해당하는 value를 COMPANY 환경 변수에 담아주고, yaml을 통해 생성했던, yaml-secret에서 location과 business key에 해당하는 value를 LOCATION과 BUSINESS 환경 변수에 담아주도록 하였습니다.
-그리고, 파일로 부터 생성한 file-env-secret의 database.url을 DBURL 환경 변수에 담아 주고, 마지막으로 file-secret는 Volume으로 정의한 후 /etc/config 경로에 app.properties 파일로 Mount 시켰습니다.
+Manifest를 살펴보면, Kind 에는 Object 종류, 그리고 metadata 에는 이름과 Label을 지정하도록 되어 있습니다.
+Spec을 보면, Pod과는 다르게, replicas 라는 것과 selector 라는 것이 있습니다.
 
-이제 작성한 Manifest를 통해 Pod을 생성합니다.
+replicas는 몇개의 복제본을 만들 것인지를 지정하는 것이고, selector는 label를 통해 pod를 확인하면서 현재 pod의 수를 관리합니다. selector가 참조하는 label은 template에 정의된 label 입니다.
 
-`kubectl apply -f secretpod.yaml`{{execute}}
+template에는 Pod의 manifest가 그대로 들어갑니다.
 
-해당 pod의 환경변수에 어떤 값들이 들어갔는지 확인해 보겠습니다.
+이제 `kubectl apply -f replicaset.yaml`{{execute}} 명령을 통해 ReplicaSet 을 생성합니다.
 
-`kubectl exec -it secret-pod -- env`{{execute}} 를 실행해 봅니다. 참고로 env는 linux에서 환경변수의 값들을 출력하는 명령입니다.
+명령을 실행 시키면, "replicaset.apps//httpd-replicaset created" 라고 출력되면서 ReplicaSet 이 만들어집니다.
 
-마지막으로, Volume으로 Mount된 파일의 내용도 확인해 보겠습니다.
+`kubectl get replicasets`{{execute}} 를 통해 생성된 ReplicaSet을 확인할 수 있으며, `kubectl get pods`{{execute}} 를 통해 3개의 Pod가 생성된 것을 확인할 수 있습니다.
+Pod의 이름은 ReplicaSet 이름 - hash 값으로 자동 생성됩니다.
 
-`kubectl exec -it secret-pod -- cat /etc/config/app.properties`{{execute}} 를 실행해 봅니다.
+다시 Editor나 vi를 이용하여 replicaset.yaml에서 replicas 값을 3에서 5로 변경해 봅니다.
+`kubectl apply -f replicaset.yaml`{{execute}} 명령을 통해 변경한 값을 적용합니다.
+
+`kubectl get pods`{{execute}} 를 통해 Pod 개수가 5개로 변경된 것을 확인할 수 있습니다.
