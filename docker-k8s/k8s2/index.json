@@ -1,45 +1,25 @@
 {
-  "title": "Kubernetes Training 1",
-  "description": "Kubernetes Workload & Service",
+  "title": "Kubernetes Training 2",
+  "description": "Kubernetes Deployment Strategies / Horizontal Pod Autoscaler",
   "difficulty": "Beginner",
-  "time": "20 minutes",
+  "time": "10 minutes",
   "details": {
     "steps": [
       {
-        "title": "워크로드",
+        "title": "Deployment",
         "text": "step1.md"
       },
       {
-        "title": "POD",
+        "title": "NodePort",
         "text": "step2.md"
       },
       {
-        "title": "ReplicaSet",
+        "title": "Deployment Strategies & Rollback",
         "text": "step3.md"
       },
       {
-        "title": "Deployment",
-        "text": "step4.md"
-      },
-      {
-        "title": "서비스",
-        "text": "step5.md"
-      },
-      {
-        "title": "ClusterIP",
-        "text": "step6.md"
-      },
-      {
-        "title": "NodePort",
-        "text": "step7.md"
-      },
-      {
-        "title": "Deployment Strategies & Rollback",
-        "text": "step8.md"
-      },
-      {
         "title": "Horizontal Pod Autoscaler",
-        "text": "step9.md"
+        "text": "step4.md"
       }
     ],
     "intro": {
