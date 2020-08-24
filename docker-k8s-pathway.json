@@ -25,6 +25,11 @@
     {
       "course_id": "k8s2",
       "title": "Kubernetes Training 2",
+      "description": "Kubernetes Deployment Strategies & Horizontal Pod Autoscaler"
+    },
+    {
+      "course_id": "k8s3",
+      "title": "Kubernetes Training 3",
       "description": "Kubernetes Configuration & Storage"
     }
   ]
