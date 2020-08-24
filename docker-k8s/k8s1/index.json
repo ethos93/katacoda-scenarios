@@ -32,14 +32,6 @@
       {
         "title": "NodePort",
         "text": "step7.md"
-      },
-      {
-        "title": "Deployment Strategies & Rollback",
-        "text": "step8.md"
-      },
-      {
-        "title": "Horizontal Pod Autoscaler",
-        "text": "step9.md"
       }
     ],
     "intro": {
@@ -47,18 +39,6 @@
     },
     "finish": {
       "text": "finish.md"
-    },
-    "assets": {
-      "host01": [
-        {"file": "aggregated-metrics-reader.yaml", "target": "/root/metrics-server"},
-        {"file": "auth-delegator.yaml", "target": "/root/metrics-server"},
-        {"file": "auth-reader.yaml", "target": "/root/metrics-server"},
-        {"file": "metrics-apiservice.yaml", "target": "/root/metrics-server"},
-        {"file": "metrics-server-deployment.yaml", "target": "/root/metrics-server"},
-        {"file": "metrics-server-pdb.yaml", "target": "/root/metrics-server"},
-        {"file": "metrics-server-service.yaml", "target": "/root/metrics-server"},
-        {"file": "resource-reader.yaml", "target": "/root/metrics-server"}
-      ]
     }
   },
   "environment": {
