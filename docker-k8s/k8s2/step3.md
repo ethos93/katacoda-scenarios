@@ -19,7 +19,7 @@ php로 작성되었으며, 요청을 받으면 1~1000000 모든 수의 제곱근
 
 php 서버를 배포하는 yaml파일을 생성해 보겠습니다.
 
-앞서 작성하였던 Deployment를 수정할 것이니 에디터를 통해 파일을 열거나 deplyhpa.yaml 을 선택하거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+앞서 작성하였던 Deployment를 수정할 것이니 에디터를 통해 파일을 열거나, `vi deployment.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
 <pre class="file" data-filename="deployment.yaml" data-target="replace">apiVersion: apps/v1
 kind: Deployment
@@ -78,7 +78,7 @@ RollingUpdate를 통해 1개의 Pod 이미지가 교체된 뒤, 나머지 9개�
 
 다음으로는 Horizontal Pod Autoscaler를 정의한 yaml파일을 생성해주어야합니다.
 
-다음을 선택하여 에디터를 통해 파일을 열거나 `hpa.yaml`{{open}} , `vi hap.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
+다음을 선택하여 에디터를 통해 파일을 열거나 `hpa.yaml`{{open}} , `vi hpa.yaml`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
 <pre class="file" data-filename="hpa.yaml" data-target="replace">apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
