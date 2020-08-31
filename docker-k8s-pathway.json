@@ -18,6 +18,11 @@
       "description": "Create Dockerfile"
     },
     {
+      "course_id": "docker4",
+      "title": "Docker Prectice",
+      "description": "Create Simple Web App Image"
+    },
+    {
       "course_id": "k8s1",
       "title": "Kubernetes Training 1",
       "description": "Kubernetes Workload & Service"
