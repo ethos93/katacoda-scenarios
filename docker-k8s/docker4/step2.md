@@ -8,7 +8,7 @@ source 코드를 가져온 뒤에 편집하여 사용하시면 됩니다.
 
 `git clone https://github.com/spring-guides/gs-spring-boot.git`{{execute}}
 
-Clone 이 완료되면, `cd /root/lab/gs-spring-boot/initial`{{execute}} 경로를 이동하여 코드작성을 진행합니다.
+/root/lab/gs-spring-boot/initial project를 통해 web application을 작성할 수 있습니다.
 
 Java JDK 버전을 1.8을 사용하며,
 
