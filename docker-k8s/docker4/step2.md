@@ -14,4 +14,4 @@ vi 를 통해 직접 파일을 생성, 편집하시거나, 아래 명령을 통�
 `touch build.gradle`{{execute}}
 `touch Dockerfile`{{execute}}
 
-java에서 환경변수값을 읽어오는 방법은, System.getenv("변수"); 를 사용하시면 됩니다.
+java에서 환경변수값을 읽어오는 방법은, System.getenv("변수명"); 를 사용하시면 됩니다.
