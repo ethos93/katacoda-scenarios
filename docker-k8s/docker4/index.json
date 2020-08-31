@@ -1,21 +1,25 @@
 {
-  "title": "Docker Training 3",
-  "description": "Create Dockerfile",
+  "title": "Docker Prectice",
+  "description": "Create Simple Web App Image",
   "difficulty": "Beginner",
   "time": "10 minutes",
   "details": {
     "steps": [
       {
-        "title": "Dockerfile 기본",
+        "title": "목표",
         "text": "step1.md"
       },
       {
-        "title": "Multi-Stage Dockerfile",
+        "title": "Java Spring boot 참고",
         "text": "step2.md"
       },
       {
-        "title": "Scratch 이미지",
+        "title": "node.js 참고",
         "text": "step3.md"
+      },
+      {
+        "title": "Python 참고",
+        "text": "step4.md"
       }
     ],
     "intro": {
@@ -26,13 +30,9 @@
       "text": "finish.md"
     }
   },
-  "files": [
-      "HelloDocker.java", "Dockerfile", "HelloDocker.go"
-  ],
   "environment": {
     "uilayout": "editor-terminal",
     "hideHiddenFiles": true,
-    "uisettings": "dockerfile",
     "uieditorpath": "/root/lab"
   },
   "backend": {
