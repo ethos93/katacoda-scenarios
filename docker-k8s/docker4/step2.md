@@ -16,6 +16,8 @@ git clone 된 source 코드를 vi 나 Editor에서 열어 편집하여 사용하
 
 java에서 환경변수값을 읽어오는 방법은, System.getenv("변수명"); 를 사용하시면 됩니다.
 
+Dockerfile은 vi를 통해 생성하거나 `touch Dockerfile`{{execute}} 를 통해 파일을 생성한 뒤 Editor를 통해 편집하시면 됩니다.
+
 빌드는 gradlew build 명령을 통해 가능하며, build가 완료되면, build/libs 디렉토리 하위에 spring-boot-0.0.1-SNAPSHOT.jar 와 같이 jar 파일이 생성됩니다.
 
 서버 구동은 java -jar spring-boot-0.0.1-SNAPSHOT.jar 와 같이 하면 됩니다.
