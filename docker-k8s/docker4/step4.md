@@ -4,7 +4,9 @@ Python으로 Web Application을 작성하는 방법은 아래 Link를 참고하�
 
 https://webpy.org/cookbook/helloworld
 
-Python3 에서 webpy 라는 모듈을 사용하는 예이며, django나 flask 를 사용하셔도 상관없습니다.
+Python3 에서 web.py 라는 모듈을 사용하는 예이며, django나 flask 를 사용하셔도 상관없습니다.
+web.py를 import 하기 위해서는, pip를 통해 web.py 모듈을 설치합니다.
+(pip install web.py)
 
 app.py 및 Dockerfile을 생성 해 주어야 합니다.
 
