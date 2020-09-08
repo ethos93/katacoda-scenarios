@@ -6,24 +6,20 @@
   "details": {
     "steps": [
       {
-        "title": "Configuration",
+        "title": "목표",
         "text": "step1.md"
       },
       {
-        "title": "ConfigMap",
+        "title": "MySql 설치",
         "text": "step2.md"
       },
       {
-        "title": "Secret",
+        "title": "Wordpress 설치",
         "text": "step3.md"
       },
       {
-        "title": "Storage",
+        "title": "Wordpress 배포 확인 및 테스트",
         "text": "step4.md"
-      },
-      {
-        "title": "Volume",
-        "text": "step5.md"
       }
     ],
     "intro": {
