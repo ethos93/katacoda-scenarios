@@ -2,9 +2,9 @@
 
 실습을 위해 디렉토리를 이동합니다.
 
-cd /root/lab{{execute}}
+`cd /root/lab`{{execute}}
 
-## 예상 Architecture
+## 목표 Architecture
 
 Wordpress는 Database로 MySQL을 사용할 수 있습니다.
 
