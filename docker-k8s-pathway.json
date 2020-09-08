@@ -36,6 +36,11 @@
       "course_id": "k8s3",
       "title": "Kubernetes Training 3",
       "description": "Kubernetes Configuration & Storage"
+    },
+    {
+      "course_id": "k8s4",
+      "title": "Kubernetes Prectice",
+      "description": "Deploy Wordpress"
     }
   ]
 }
