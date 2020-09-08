@@ -1,6 +1,6 @@
 {
-  "title": "Kubernetes Training 3",
-  "description": "Kubernetes Configuration & Storage",
+  "title": "Kubernetes Prectice",
+  "description": "Deploy Wordpress",
   "difficulty": "Beginner",
   "time": "20 minutes",
   "details": {
