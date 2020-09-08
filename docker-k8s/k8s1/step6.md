@@ -8,7 +8,7 @@ metadata:
   name: httpd-clusterip-service
 spec:
   selector:
-    app: httpd-replicaset
+    app: httpd
   ports:
     - protocol: TCP
       port: 80
@@ -16,7 +16,7 @@ spec:
   type: ClusterIP
 </pre>
 
-Manifest를 살펴보면, Kind에는 Service를 지정하였고, Selector에 app: httpd-replicaset 을 지정하였는데, 이것은 앞에서 ReplicaSet 을 생성할 때 Pod의 Label과 일치 합니다. 이처럼 Label은 Service와 Pod을 연결시켜주는 매우 중요한 Key 이므로 반드시 일치시켜줘야만 합니다. 복수개의 Label을 지정한다면 좀더 세밀하게 매핑을 지정할 수도 있습니다.
+Manifest를 살펴보면, Kind에는 Service를 지정하였고, Selector에 app: httpd 을 지정하였는데, 이것은 앞에서 Pod을 생성할 때 Pod의 Label과 일치 합니다. 이처럼 Label은 Service와 Pod을 연결시켜주는 매우 중요한 Key 이므로 반드시 일치시켜줘야만 합니다. 복수개의 Label을 지정한다면 좀더 세밀하게 매핑을 지정할 수도 있습니다.
 
 Type을 보면 ClusterIP로 지정되어 있으며, ClusterIP는 Service의 Default Type 이므로 생략해도 상관없습니다.
 
@@ -48,4 +48,4 @@ curlpod 라는 pod 이 생성되었으니, 이제 curlpod 에서 서버스 이�
 `kubectl exec -it curlpod -- curl httpd-clusterip-service`{{execute}} 으로 호출해 보면, curlpod 안에서 curl 명령이 실행됩니다.
 
 응답이 정상적으로 오는 것을 확인할 수 있습니다. 동일한 exec 명령을 여러번 실행시켜 보면, 응답 중 hostname이 변하는 것도 확인할 수 있습니다.
-이것은, 서비스를 통해 replicaset의 pod들 중 하나에 roundrobin으로 호출되기 때문입니다.
+이것은, 서비스를 통해 pod으로 호출되기 때문입니다.
