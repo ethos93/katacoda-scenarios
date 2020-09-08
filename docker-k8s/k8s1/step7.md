@@ -8,7 +8,7 @@ metadata:
   name: httpd-nodeport-service
 spec:
   selector:
-    app: httpd-deployment
+    app: httpd-replicaset
   ports:
     - protocol: TCP
       port: 80
@@ -16,7 +16,7 @@ spec:
   type: NodePort
 </pre>
 
-Manifest를 살펴보면, Kind에는 Service를 지정하였고, Selector에 app: httpd-deployment 을 지정하였는데, 이것은 앞에서 Deployment 을 생성할 때 Pod의 Label과 일치 합니다.
+Manifest를 살펴보면, Kind에는 Service를 지정하였고, Selector에 app: httpd-replicaset 을 지정하였는데, 이것은 앞에서 ReplicaSet 을 생성할 때 Pod의 Label과 일치 합니다.
 
 Type을 보면 NodePort로 지정되어 있습니다.
 
