@@ -32,6 +32,10 @@
       {
         "title": "NodePort",
         "text": "step7.md"
+      },
+      {
+        "title": "LoadBalancer",
+        "text": "step8.md"
       }
     ],
     "intro": {
