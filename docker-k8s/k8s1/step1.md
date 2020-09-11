@@ -1,5 +1,9 @@
 Kubernetes에 Application을 배포하고, 외부에서 접속 할 수 있도록 설정을 하는 실습을 해 보겠습니다.
 
+우선 Kubernetes를 구송시키기 위해서
+
+`launch.sh`{{execute}} 를 실행시킵니다.
+
 현재 kubernetes 환경의 상태를 확인하기 위해서는,
 
 `kubectl cluster-info`{{execute}}
