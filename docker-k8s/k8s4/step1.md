@@ -6,5 +6,7 @@
 
 ## 목표 Architecture
 
+![WordPress](./assets/wordpress.png)
+
 Wordpress는 Database로 MySQL을 사용할 수 있습니다.
 
