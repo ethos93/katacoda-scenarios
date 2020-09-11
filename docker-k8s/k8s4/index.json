@@ -36,6 +36,6 @@
     "uieditorpath": "/root/lab"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running"
+    "imageid": "kubernetes-cluster-running:1.18"
   }
 }
