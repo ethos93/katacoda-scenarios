@@ -1,6 +1,8 @@
 이번에는 WordPress를 Kubernetes에 배포하고 문서를 작성해 보는 실습을 진행하겠습니다.
 
-실습을 위해 디렉토리를 이동합니다.
+우선 Kubernetest를 구동시키기 위해 `launch.sh`{{execute}}를 실행시킵니다.
+
+이제 실습을 위해 디렉토리를 이동합니다.
 
 `cd /root/lab`{{execute}}
 
