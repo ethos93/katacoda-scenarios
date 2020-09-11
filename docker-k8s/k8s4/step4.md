@@ -1,9 +1,7 @@
-Kubernetes 에서 저장 공간을 사용하기 위해서는 Volume을 사용합니다.
+## WordPress 접속
 
-Volume 은 컨테이너가 Storage에 접근하고 사용하기 위한 방법으로 이해하시면 됩니다.
+정상적으로 Deploy가 끝나고 Pod과 Service가 생성되었다면, 웹브라우저를 통해 접속이 가능합니다.
 
-Container는 격리된 파일시스템을 사용하기 때문에 일반적인 방법으로 파일을 저장할 경우 해당 파일은 Container가 제거되는 순간 함께 사라지게 됩니다.
+LoadBalaner Type의 서비스로 만들면, Katacode는 Host와 동일한 IP가 서비스에 할당되니 아래와 링크를 통해 브라우저로 접속하시면 됩니다.
 
-따라서 각 Container 에서 파일을 일시적으로 혹은 영구적으로 저장하기 위해서는 Container에 Volume을 마운트하여 사용합니다.
-
-볼륨은 크게 임시 볼륨, 로컬 볼륨, 네트워크 볼륨으로 구분할 수 있으며, 일반적으로는 네트워크 볼륨을 가장 많이 사용하게 됩니다.
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com
