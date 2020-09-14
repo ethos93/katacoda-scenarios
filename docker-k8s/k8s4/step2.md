@@ -13,3 +13,23 @@ Docker Hub MySQL 설명에도 나와 있지만, Container로 구동 시키기 �
 MYSQL_ROOT_PASSWORD (root 계정의 패스워드), MYSQL_DATABASE (처음 생성되는 Database명), MYSQL_USER (처음 생성되는 사용자 계정), MYSQL_PASSWORD (처음 생성되는 사용자 계정에 대한 패스워드)
 
 ConfigMaps 에 MYSQL_DATABASE와 MYSQL_USER 정보를 저장하고, Secret에는 MYSQL_ROOT_PASSWORD와 MYSQL_PASSWORD 정보를 저장하여 Deployment 명세 작성시 환경변수 Value로 넘겨 줍니다.
+
+## ConfigMap 및 Secret 생성
+
+ConfigMap
+
+kubectl create configmap configmap이름 --from-literal=key1=value1 --from-literal=key2=value2
+
+Secret
+
+kubectl create secret generic secret이름 --from-literal=key1=value1 --from-literal=key2=value2
+
+## Yaml 작성
+
+1. MySQL Deployment
+
+`mysql-deployment.yaml`{{open}}
+
+2. MySQL Service
+
+`mysql-service.yaml`{{open}}
