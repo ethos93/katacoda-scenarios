@@ -1,3 +1,7 @@
+우선 Kubernetes를 구송시키기 위해서
+
+`launch.sh`{{execute}} 를 실행시킵니다.
+
 대부분의 Application 은 환경에 따라 서로 다른 설정값을 사용할 수 있도록 변수로 처리하여 개발을 하게 됩니다.
 예를 들어, Database의 IP/Port, Username, Password 와 같이 개발계, 검증계, 운영계 별로 다른 값을 가지게 되는 경우가 대부분 입니다.
 
