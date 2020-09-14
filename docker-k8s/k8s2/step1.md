@@ -1,4 +1,4 @@
-우선 Kubernetes를 구송시키기 위해서
+우선 Kubernetes를 구시키기 위해서
 
 `launch.sh`{{execute}} 를 실행시킵니다.
 
