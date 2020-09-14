@@ -1,7 +1,3 @@
-우선 Kubernetes를 구시키기 위해서
-
-`launch.sh`{{execute}} 를 실행시킵니다.
-
 컨테이너 CPU 및 메모리 사용량과 같은 리소스 사용량 메트릭은 쿠버네티스의 메트릭 API를 통해 사용할 수 있습니다. 이 메트릭은 kubectl top 명령 사용과 같이 사용자가 직접적으로 액세스하거나, Horizontal Pod Autoscaler 같은 클러스터의 컨트롤러에서 결정을 내릴 때 사용될 수 있습니다.
 
 이 메트릭을 사용하기 위해서는, 메트릭 서버를 사전에 Kubernetes Cluster에 배포를 하여야만 합니다. (Katacoda 도 사전에 배포되어 있지 않음)
