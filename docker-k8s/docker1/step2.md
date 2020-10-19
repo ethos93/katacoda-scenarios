@@ -1,4 +1,4 @@
-Host 에서 Layer를 조회하여 보면 4개의 Layer가 조회되는 것을 확인할 수 있습니다.
+Host 에서 Layer를 조회하여 보면 3개의 Layer가 조회되는 것을 확인할 수 있습니다.
 
 ## overlay 이미지 확인
 /var/lib/docker/overlay 경로에 이미지가 조회됩니다.
@@ -18,9 +18,9 @@ Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
 
 `ls -1 -t /var/lib/docker/overlay`{{execute}}
 
-docker run 이전에는 4개의 layer가 있었으나, docker run 이 된 후에는 layer가 하나 추가 된 것을 확인할 수 있습니다.
+docker run 이전에는 3개의 layer가 있었으나, docker run 이 된 후에는 layer가 하나 추가 된 것을 확인할 수 있습니다.
 
-기존 4개의 layer는 Read Only Layer이며, Continer가 실행되면 이미지가 변경될 Layer가 생성되며 해당 Layer는 Read Write가 모두 가능합니다.
+기존 3개의 layer는 Read Only Layer이며, Continer가 실행되면 이미지가 변경될 Layer가 생성되며 해당 Layer는 Read Write가 모두 가능합니다.
 
 ## Docker Container로 부터 이미지를 생성
 Docker Container에 접속되어 있는 Terminal Tab에서 아래 명령으로 파일을 생성합니다.
@@ -41,7 +41,7 @@ Terminal 1 Tab에서 overlay 이미지를 다시 확인해 봅니다.
 
 `docker rm -f myubuntu`{{execute}}
 
-다시한번 overlay 이미지를 확인해 보면 `ls -1 -t /var/lib/docker/overlay`{{execute}} Container가 실행되면서 생성되었던 Read Write Layer는 삭제되고 Read Only Layer만 5개가 남은 것을 확인할 수 있습니다.
+다시한번 overlay 이미지를 확인해 보면 `ls -1 -t /var/lib/docker/overlay`{{execute}} Container가 실행되면서 생성되었던 Read Write Layer는 삭제되고 Read Only Layer만 4개가 남은 것을 확인할 수 있습니다.
 
 마지막으로, 신규로 생성한 이미지도 확인해 봅니다.
 
