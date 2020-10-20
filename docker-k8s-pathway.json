@@ -19,7 +19,7 @@
     },
     {
       "course_id": "docker4",
-      "title": "Docker Prectice",
+      "title": "Docker Practice",
       "description": "Create Simple Web App Image"
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       "course_id": "k8s4",
-      "title": "Kubernetes Prectice",
+      "title": "Kubernetes Practice",
       "description": "Deploy Wordpress"
     }
   ]
