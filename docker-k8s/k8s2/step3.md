@@ -121,5 +121,6 @@ Horizontal Pod Autoscaler 에서 maxReplicas의 수를 크게 지정하였더라
 
 부하가 계속 주어질 때 Pod의 개수 변화를 확인 할 수 있습니다. (부하량이 충분하지 않으면, Pod이 빠르게 Scale Out 되지는 않습니다.)
 
-while 문으로 부하를 주고 있는 terminal에서 ctrl-c 로 부하를 멈추게 되면, 일정 시간이 지난 후에 다시 Pod의 개수가 변경되는 것을 확인할 수 있습니다.
+while 문으로 부하를 주고 있는 terminal에서 <kbd>Ctrl</kbd>+<kbd>C</kbd> 로 부하를 멈추게 되면, 일정 시간이 지난 후에 다시 Pod의 개수가 변경되는 것을 확인할 수 있습니다.
 
+`^C`{{execute ctrl-seq}}
