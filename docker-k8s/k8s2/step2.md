@@ -23,7 +23,9 @@ ethos93/go-httpd:v1 으로 되어 있는 부분을 ethos93/go-httpd:v2 로 tag�
 
 이 처럼 Deployment의 RollingUpdate는 서비스의 중단 없이 순차적으로 Pod의 Image를 변경하면서 Update를 진행하는 것을 확인할 수 있습니다.
 
-Ctrl + C 를 눌러 curl 명령을 중단 시킵니다.
+<kbd>Ctrl</kbd>+<kbd>C</kbd> 를 눌러 curl 명령을 중단 시킵니다.
+
+`^C`{{execute ctrl-seq}}
 
 이제, 다시 Rollback을 수행해 보겠습니다.
 
