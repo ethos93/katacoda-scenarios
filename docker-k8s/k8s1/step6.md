@@ -41,7 +41,7 @@ CLUSTER-IP는 Kubernetes cluster 내에서 사용가능한 IP이며 다른 Pod�
 CoreDNS는 Cluster내부에서만 사용이 가능하니, Debugging을 위한 Pod을 하나 생성해 보겠습니다. 아래 명령을 통해 debugging용 pod을 생성합니다.
 curl을 포함하고 있는 아주 작은 container image 입니다.
 
-`kubectl run curlpod --image=radial/busyboxplus:curl --generator=run-pod/v1 --command -- /bin/sh -c "while true; do echo hi; sleep 10; done"`{{execute}}
+`kubectl run curlpod --image=radial/busyboxplus:curl --command -- /bin/sh -c "while true; do echo hi; sleep 10; done"`{{execute}}
 
 curlpod 라는 pod 이 생성되었으니, 이제 curlpod 에서 서버스 이름으로 http 서버를 호출해 보겠습니다.
 
