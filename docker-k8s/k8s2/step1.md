@@ -2,6 +2,10 @@
 
 이 메트릭을 사용하기 위해서는, 메트릭 서버를 사전에 Kubernetes Cluster에 배포를 하여야만 합니다. (Katacoda 도 사전에 배포되어 있지 않음)
 
+Kubernetes가 정상적으로 구동이 되었는지 확인을 한 뒤에 메트릭 서버를 배포합니다.
+
+`kubectl get nodes`{{execute}} 를 실행하여, 두개의 node가 모두 Ready 인 것을 확인한 후 진행합니다.
+
 메트릭을 사용하기 위한 Manifest는 /root/metrics-server에 구성되어 있으니, 이를 먼저 배포 합니다.
 
 `kubectl apply -f /root/metrics-server/.`{{execute}} 를 실행하면, 메트릭 서버가 배포됩니다.
