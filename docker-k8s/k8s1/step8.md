@@ -30,14 +30,14 @@ apply로 yaml 파일을 통해 object를 생성해 보겠습니다.
 
 <pre>
 NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-httpd-loadbalancer-service   LoadBalancer     10.107.189.63   <pending>          80:31973/TCP     37m
+httpd-loadbalancer-service   LoadBalancer     10.107.189.63   	&lt;pending&gt;         80:31973/TCP     37m
 </pre>
 
 CLUSTER-IP와 PORT는 다르겠지만 위와 같은 형태로 출력이 됩니다.
 CLUSTER-IP는 clusterIP Type으로 생성했을 때와 동일하게 Kubernetes cluster 내에서 사용가능한 IP이며 다른 Pod에서 해당 IP로 호출이 가능합니다.
 또한 NodePort Type으로 생성했을 때와 같이 PORT(S) 부분에 80 이외에 31973과 같이 30000번대의 Port가 추가로 보이는 것을 확인 할 수 있습니다.
 
-추가로 EXTERNAL-IP 부분에 <pending> 이라고 되어 있는 것을 확인할 수 있는데, LoadBalancer Type을 지원하는 Kubernetes Cluster에서는 외부IP가 할당이 되며 이때 포트는 기본 포트(예, 80)을 사용하게 됩니다.
-Katacoda는 EXTERNAL-IP를 할당해 주지 않기 때문에 계속 <pending>으로 남아 있는 것을 확인할 수 있습니다.
+추가로 EXTERNAL-IP 부분에 &lt;pending&gt; 이라고 되어 있는 것을 확인할 수 있는데, LoadBalancer Type을 지원하는 Kubernetes Cluster에서는 외부IP가 할당이 되며 이때 포트는 기본 포트(예, 80)을 사용하게 됩니다.
+Katacoda는 EXTERNAL-IP를 할당해 주지 않기 때문에 계속 &lt;pending&gt;으로 남아 있는 것을 확인할 수 있습니다.
 
 LoadBalancer Type으로 서비스를 생성하여도 ClusterIP의 속성과 NodePort의 속성을 모두 동일하게 가지고 있기 때문에, ClusterIP Type에서 사용한 것과 동일하게 Cluster내에서는 ClusterIP 혹은 서비스명으로 호출하는 것도 가능하며, NodePort를 통해 호출하는 것도 가능합니다.
