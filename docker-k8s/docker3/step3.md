@@ -28,7 +28,7 @@ Dockerfile을 아래와 같이 수정합니다.
 역시 vi가 익숙하시면 vi를 사용하셔도 됩니다.
 `vi Dockerfile`{{execute}}
 
-<pre class="file" data-filename="Dockerfile" data-target="replace">FROM golang:alpine AS build-stage
+<pre class="file" data-filename="Dockerfile" data-target="replace">FROM golang:1.15.8-buster AS build-stage
 WORKDIR $GOPATH/src/HelloDocker/
 COPY HelloDocker.go .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflags="-w -s" -o /hello/HelloDocker
