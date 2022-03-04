@@ -115,11 +115,9 @@ spec:
             configMapKeyRef:
               name: yaml-config
               key: business
-        - name: DBURL
-          valueFrom:
-            configMapKeyRef:
+      envFrom:
+        - configMapRef:
               name: file-env-config
-              key: database.url
       volumeMounts:
       - name: config-volume
         mountPath: /etc/config
@@ -131,7 +129,7 @@ spec:
 </pre>
 
 Manifest를 보면, 아주 가벼운 busybox shell 만 포함하고 있는 이미지를 사용하며, kubectl cli를 통해 생성했던, literal-config에서 company키에 해당하는 value를 COMPANY 환경 변수에 담아주고, yaml을 통해 생성했던, yaml-config에서 location과 business key에 해당하는 value를 LOCATION과 BUSINESS 환경 변수에 담아주도록 하였습니다.
-그리고, 파일로 부터 생성한 file-env-config의 database.url을 DBURL 환경 변수에 담아 주고, 마지막으로 file-config는 Volume으로 정의한 후 /etc/config 경로에 app.properties 파일로 Mount 시켰습니다.
+그리고, 파일로 부터 생성한 file-env-config의 모든 Key와 Value 환경 변수에 담아 주고, 마지막으로 file-config는 Volume으로 정의한 후 /etc/config 경로에 app.properties 파일로 Mount 시켰습니다.
 
 이제 작성한 Manifest를 통해 Pod을 생성합니다.
 
