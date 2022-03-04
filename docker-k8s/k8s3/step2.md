@@ -117,7 +117,7 @@ spec:
               key: business
       envFrom:
         - configMapRef:
-              name: file-env-config
+            name: file-env-config
       volumeMounts:
       - name: config-volume
         mountPath: /etc/config
