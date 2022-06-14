@@ -35,6 +35,8 @@ literal-config 이라는 이름의 configmap에 key는 company, value는 samsung
 
 다음을 선택하여 에디터를 통해 파일을 열거나 `app.properties`{{open}} , `vi app.properties`{{execute}} 를 통해 vi를 사용하셔도 됩니다.
 
+아래 properties 파일은 교육을 위한 예시이며, 실제 Database에 대한 정보가 아닙니다.
+
 <pre class="file" data-filename="app.properties" data-target="replace">database.url=192.168.0.88
 database.port=5432
 database.db=employee
